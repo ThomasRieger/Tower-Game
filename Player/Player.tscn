@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://73xvh87ssiju"]
+
+[ext_resource type="Script" path="res://Player/character_body_2d.gd" id="1_is4dm"]
+[ext_resource type="Texture2D" uid="uid://w8k7i5df63q3" path="res://assets/pixil-frame-0.png" id="2_6elub"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pkrtw"]
+size = Vector2(11, 15)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_is4dm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8.5, -15.5)
+shape = SubResource("RectangleShape2D_pkrtw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Pixil-frame-0" type="Sprite2D" parent="."]
+position = Vector2(9, -16)
+texture = ExtResource("2_6elub")
