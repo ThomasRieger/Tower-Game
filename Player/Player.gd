@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
-const SPEED = 100.0
+const SPEED = 50.0
 const JUMP_VELOCITY = -250.0
 const GRAVITY = 500.0
 const FALL_MULTIPLIER = 1.5
-const DASH_SPEED = 400.0
+const DASH_SPEED = 300.0
 const DASH_LENGHT = 0.1
 
 @onready var dash = $Dash
@@ -50,12 +50,22 @@ func _physics_process(delta: float) -> void:
 	# movement
 	var direction := Input.get_axis("a", "d")
 	if direction != 0:
-		velocity.x += direction * effective_speed * delta *10
+		velocity.x += direction * SPEED * delta *10
+		
+		print(velocity.x)
 		facing_direction = direction
 		if facing_direction == -1:
 			sprite.flip_h = true
+			if dash.is_dashing():
+				velocity.x = -effective_speed
+			else:
+				velocity.x = max(velocity.x , -200)
 		else:
 			sprite.flip_h = false
+			if dash.is_dashing():
+				velocity.x = effective_speed
+			else:
+				velocity.x = min(velocity.x , 200)
 		walk()
 		
 	else:
@@ -63,11 +73,12 @@ func _physics_process(delta: float) -> void:
 			var face = facing_direction
 			velocity.x = face * DASH_SPEED
 		else:
-			velocity.x = move_toward(velocity.x, 0, effective_speed)
-			sprite.play("Idle")
-
+			velocity.x = move_toward(velocity.x, 0, SPEED * delta * 10)
+			if velocity.x != 0:
+				sprite.play("Stoping")
+			else:
+				sprite.play("Idle")
 	move_and_slide()
-
 func jump():
 	velocity.y = JUMP_VELOCITY
 	wall_jump()
@@ -80,12 +91,12 @@ func wall_jump():
 	if is_on_wall() and Input.is_action_pressed("a"):
 		velocity.y = JUMP_VELOCITY
 		# left
-		velocity.x = 200
+		velocity.x = 100
 		print(velocity)
 	elif is_on_wall() and Input.is_action_pressed("d"):
 		velocity.y = JUMP_VELOCITY
 		# right
-		velocity.x = -200
+		velocity.x = -100
 		print(velocity)
 		
 func walk():
