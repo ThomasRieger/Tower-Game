@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://73xvh87ssiju"]
+[gd_scene load_steps=5 format=3 uid="uid://73xvh87ssiju"]
 
-[ext_resource type="Script" path="res://Player/character_body_2d.gd" id="1_is4dm"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_is4dm"]
 [ext_resource type="Texture2D" uid="uid://w8k7i5df63q3" path="res://assets/pixil-frame-0.png" id="2_6elub"]
+[ext_resource type="PackedScene" uid="uid://rfa5r3ov5b2u" path="res://Player/Movement/Dash.tscn" id="3_ymtc8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pkrtw"]
 size = Vector2(11, 15)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_is4dm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -18,3 +19,5 @@ shape = SubResource("RectangleShape2D_pkrtw")
 [node name="Pixil-frame-0" type="Sprite2D" parent="."]
 position = Vector2(9, -16)
 texture = ExtResource("2_6elub")
+
+[node name="Dash" parent="." instance=ExtResource("3_ymtc8")]
