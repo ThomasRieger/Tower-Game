@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Tower Game"
-run/main_scene="res://main/World.tscn"
+run/main_scene="res://Main_Menu/Main_Menu.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 boot_splash/show_image=false
 boot_splash/fullsize=false

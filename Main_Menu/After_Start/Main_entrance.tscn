@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=4 uid="uid://gdglwyk35qax"]
+[gd_scene load_steps=9 format=4 uid="uid://bqyoih2a0ustl"]
 
-[ext_resource type="PackedScene" uid="uid://73xvh87ssiju" path="res://Player/Player.tscn" id="1_qnndc"]
-[ext_resource type="Texture2D" uid="uid://b87dhenfunxtf" path="res://assets/tower_tile1.png" id="4_ksuit"]
+[ext_resource type="PackedScene" uid="uid://73xvh87ssiju" path="res://Player/Player.tscn" id="1_r5kq6"]
+[ext_resource type="Texture2D" uid="uid://b87dhenfunxtf" path="res://assets/tower_tile1.png" id="2_86g10"]
+[ext_resource type="Script" path="res://Main_Menu/After_Start/Area_Start.gd" id="3_5f26e"]
 
 [sub_resource type="Gradient" id="Gradient_nc1vc"]
 offsets = PackedFloat32Array(0)
@@ -11,7 +12,7 @@ colors = PackedColorArray(0, 0, 0, 1)
 gradient = SubResource("Gradient_nc1vc")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4jywv"]
-texture = ExtResource("4_ksuit")
+texture = ExtResource("2_86g10")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, -11.75, 16, -12, -16)
@@ -36,9 +37,15 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_4jywv")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c5kt"]
+size = Vector2(64, 20)
+
 [node name="Map" type="Node2D"]
+position = Vector2(0, 18)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -20)
+zoom = Vector2(0.95, 0.95)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -2029.0
@@ -47,8 +54,20 @@ offset_right = 2352.0
 offset_bottom = 1282.0
 texture = SubResource("GradientTexture1D_f60od")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_qnndc")]
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_r5kq6")]
+position = Vector2(-207, 91)
 
 [node name="towertile" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD4/wIAAAAAAAAAAAD4/wEAAAAAAAAAAAD4/wAAAAAAAAAAAAD4////AAAAAAAAAAD4//7/AAAAAAAAAAD4//3/AAAAAAAAAAD4//z/AAAAAAAAAAD4//v/AAAAAAAAAAD4//r/AAAAAAAAAAD4//n/AAAAAAAAAAAHAPn/AAAAAAAAAAAHAPr/AAAAAAAAAAAHAPv/AAAAAAAAAAAHAPz/AAAAAAAAAAAHAP3/AAAAAAAAAAAHAP7/AAAAAAAAAAAHAP//AAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAD4/wMAAAABAAIAAAAHAAMAAAABAAIAABD5/wMAAAAAAAAAAFD6/wMAAAAAAAAAAFD7/wMAAAAAAAAAAFD8/wMAAAAAAAAAAFD9/wMAAAAAAAAAAFD+/wMAAAAAAAAAAFD//wMAAAAAAAAAAFAAAAMAAAAAAAAAAFABAAMAAAAAAAAAAFACAAMAAAAAAAAAAFADAAMAAAAAAAAAAFAEAAMAAAAAAAAAAFAFAAMAAAAAAAAAAFAGAAMAAAAAAAAAAFAAAAIAAAABAAEAAAD+/wEAAAABAAEAAAD8/wAAAAACAAEAABD7/wAAAAACAAEAAAD5////AAABAAEAAAA=")
+position = Vector2(4, -6)
+tile_map_data = PackedByteArray("AAD4/wIAAAAAAAAAAAD4/wEAAAAAAAAAAAD4/wAAAAAAAAAAAAD4////AAAAAAAAAAD4//7/AAAAAAAAAAD4//3/AAAAAAAAAAD4//z/AAAAAAAAAAD4//v/AAAAAAAAAAD4//r/AAAAAAAAAAD4//n/AAAAAAIAAFAHAPn/AAAAAAIAAFAHAPr/AAAAAAAAAAAHAPv/AAAAAAAAAAAHAPz/AAAAAAAAAAAHAP3/AAAAAAAAAAAHAP7/AAAAAAAAAAAHAP//AAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAD4/wMAAAAAAAIAAAD5/wMAAAAAAAAAAFD6/wMAAAAAAAAAAFD7/wMAAAAAAAAAAFD8/wMAAAAAAAAAAFD9/wMAAAAAAAAAAFD+/wMAAAAAAAAAAFD//wMAAAAAAAAAAFAAAAMAAAAAAAAAAFABAAMAAAAAAAAAAFACAAMAAAAAAAAAAFADAAMAAAAAAAAAAFAEAAMAAAAAAAIAADAHAAMAAAAAAAIAAGA=")
 tile_set = SubResource("TileSet_hegri")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(197, 132)
+script = ExtResource("3_5f26e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_4c5kt")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="Player_entered"]

@@ -1,0 +1,88 @@
+[gd_scene load_steps=11 format=4 uid="uid://dyuqiy241xgtg"]
+
+[ext_resource type="Texture2D" uid="uid://cwo16wc0c0t7g" path="res://assets/slime_anim1.png" id="2_cfsav"]
+[ext_resource type="Texture2D" uid="uid://b87dhenfunxtf" path="res://assets/tower_tile1.png" id="2_inid5"]
+[ext_resource type="Script" path="res://Main_Menu/Main_animations.gd" id="2_t4xm2"]
+
+[sub_resource type="Gradient" id="Gradient_nc1vc"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_f60od"]
+gradient = SubResource("Gradient_nc1vc")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4jywv"]
+texture = ExtResource("2_inid5")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, -11.75, 16, -12, -16)
+0:0/0/physics_layer_0/polygon_1/points = PackedVector2Array(16, -16, 16, 16, 11.75, 16, 11.75, -16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.875, -3.8125, 7.125, -3.9375, 7.125, 4.0625, -6.75, 4.0625)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -4.11006, 16, -4.02167, 16, 4.02167, -16, 4.02167)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -4.11006, 16, -4.02167, 16, 4.02167, -16, 3.93328)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -7.9375, -16, -7.9375)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -7.9375, -16, -7.9375)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(11.875, -16, 11.75, -12.1875, 16, -12.0625, 16, -16)
+
+[sub_resource type="TileSet" id="TileSet_hegri"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_4jywv")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ka8q2"]
+atlas = ExtResource("2_cfsav")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fxyc"]
+atlas = ExtResource("2_cfsav")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cye1u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ka8q2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fxyc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
+
+[node name="Map" type="Node2D"]
+position = Vector2(0, 18)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -20)
+zoom = Vector2(0.95, 0.95)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -2029.0
+offset_top = -1328.0
+offset_right = 2352.0
+offset_bottom = 1282.0
+texture = SubResource("GradientTexture1D_f60od")
+
+[node name="towertile" type="TileMapLayer" parent="."]
+position = Vector2(4, -6)
+tile_map_data = PackedByteArray("AAD4/wIAAAAAAAAAAAD4/wEAAAAAAAAAAAD4/wAAAAAAAAAAAAD4////AAAAAAAAAAD4//7/AAAAAAAAAAD4//3/AAAAAAAAAAD4//z/AAAAAAAAAAD4//v/AAAAAAAAAAD4//r/AAAAAAAAAAD4//n/AAAAAAIAAFAHAPn/AAAAAAIAAFAHAPr/AAAAAAAAAAAHAPv/AAAAAAAAAAAHAPz/AAAAAAAAAAAHAP3/AAAAAAAAAAAHAP7/AAAAAAAAAAAHAP//AAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAD4/wMAAAAAAAIAAAD5/wMAAAAAAAAAAFD6/wMAAAAAAAAAAFD7/wMAAAAAAAAAAFD8/wMAAAAAAAAAAFD9/wMAAAAAAAAAAFD+/wMAAAAAAAAAAFD//wMAAAAAAAAAAFAAAAMAAAAAAAAAAFABAAMAAAAAAAAAAFACAAMAAAAAAAAAAFADAAMAAAAAAAAAAFAEAAMAAAAAAAIAADAHAAMAAAAAAAIAAGA=")
+tile_set = SubResource("TileSet_hegri")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-196, 77)
+script = ExtResource("2_t4xm2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(-2, 2)
+sprite_frames = SubResource("SpriteFrames_cye1u")
+animation = &"idle"
