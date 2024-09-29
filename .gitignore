@@ -1,3 +1,5 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+Slime Tower Game/
+Slime Tower Game.zip/

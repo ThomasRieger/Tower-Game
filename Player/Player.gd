@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+# Constant
 const SPEED = 50.0
 const JUMP_VELOCITY = -250.0
 const GRAVITY = 500.0
@@ -7,18 +8,97 @@ const FALL_MULTIPLIER = 1.5
 const DASH_SPEED = 300.0
 const DASH_LENGHT = 0.1
 
+# Nodes
 @onready var dash = $Dash
 @onready var colli = $CollisionShape2D
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var leftray = $left_ray
 @onready var rightray= $right_ray
 
+# Variable
 var facing_direction = 0 
 var dash_timer = 0.0
 var animation_lock : bool = false
+var is_wall_sliding = false
+var wall_sliding_gravity = 100.0
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+
+# Wall jump.
+	if Input.is_action_pressed("jump") and is_on_wall():
+		wall_jump()
+# Jump
+	if Input.is_action_pressed("jump") and is_on_floor():
+		jump()
+# Jump control
+	if Input.is_action_just_released("jump"):
+		jump_cut()
+
+# Dash Limiter
+	if dash_timer > 0:
+		dash_timer -= delta  # Reduce timer 
+	else:# Dash
+		if Input.is_action_just_pressed("dash") and not dash.is_dashing():
+			dash.start_dash(DASH_LENGHT)
+			dash_timer = 2.0
+	var effective_speed = DASH_SPEED if dash.is_dashing() else SPEED
+	if is_on_floor(): dash_timer = 0.0
+
+# Function in use
+	movement(effective_speed,SPEED,delta)
+	move_and_slide()
+	wall_slide(delta)
+	gravity(GRAVITY,FALL_MULTIPLIER,delta)
+
+#--------------------------Functions--------------------------#
+# Jump
+func jump():
+	velocity.y = JUMP_VELOCITY
+	wall_jump()
+# Short jump
+func jump_cut():
+	if velocity.y < -50:
+		velocity.y = -50
+# Wall jump
+func wall_jump():
+	if is_on_wall() and leftray.is_colliding():
+		velocity.y = JUMP_VELOCITY
+		# left
+		velocity.x = 150
+		#print(norm)
+		#print(velocity)
+	elif is_on_wall() and rightray.is_colliding():
+		velocity.y = JUMP_VELOCITY
+		# right
+		velocity.x = -150
+		#print(velocity)
+# Walk animation
+func walk_animation():
+	if abs(velocity.y) < 10:
+		sprite.play("Walk_loop")
+	elif velocity.y < -80:
+		sprite.play("upup")
+	#elif velocity.y < -20:
+		#sprite.play("up")
+	elif velocity.y > 80:
+		sprite.play("downdown")
+	#elif velocity.y > 20:
+		#sprite.play("down")
+	animation_lock = true
+# Wall Slide
+func wall_slide(delta):
+	if is_on_wall() and !is_on_floor():
+		if leftray.is_colliding() or rightray.is_colliding():
+			is_wall_sliding = true
+		else:
+			is_wall_sliding = false
+	else:
+		is_wall_sliding = false
+	if is_wall_sliding:
+		velocity.y += wall_sliding_gravity * delta
+		velocity.y = min(velocity.y, wall_sliding_gravity)
+# Gravity
+func gravity(GRAVITY,FALL_MULTIPLIER,delta):
 	if not is_on_floor():
 		if velocity.y > 0:  # If falling
 			velocity.y += GRAVITY * FALL_MULTIPLIER * delta
@@ -26,31 +106,8 @@ func _physics_process(delta: float) -> void:
 			velocity.y = min(velocity.y, 500)
 		else:  # If jumping up
 			velocity.y += GRAVITY * delta
-			
-	# Wall jump
-	if Input.is_action_pressed("jump") and is_on_wall():
-		wall_jump()
-		
-	# Handle jump.
-	if Input.is_action_pressed("jump") and is_on_floor():
-		jump()
-
-	# Jump control
-	if Input.is_action_just_released("jump"):
-		jump_cut()
-	
-		# Dash
-	if dash_timer > 0:
-		dash_timer -= delta  # Reduce timer 
-	else:
-		# Dash
-		if Input.is_action_just_pressed("dash") and not dash.is_dashing():
-			dash.start_dash(DASH_LENGHT)
-			dash_timer = 2.0
-	var effective_speed = DASH_SPEED if dash.is_dashing() else SPEED
-	if is_on_floor(): dash_timer = 0.0
-
-	# movement
+# Movement
+func movement(effective_speed,SPEED,delta):
 	var direction := Input.get_axis("a", "d")
 	if direction != 0:
 		velocity.x += direction * SPEED * delta *10
@@ -69,7 +126,7 @@ func _physics_process(delta: float) -> void:
 				velocity.x = effective_speed
 			else:
 				velocity.x = min(velocity.x , 200)
-		walk()
+		walk_animation()
 		
 	else:
 		if dash.is_dashing():
@@ -89,38 +146,3 @@ func _physics_process(delta: float) -> void:
 				#sprite.play("down")
 			else:
 				sprite.play("Idle")
-	move_and_slide()
-
-func jump():
-	velocity.y = JUMP_VELOCITY
-	wall_jump()
-
-func jump_cut():
-	if velocity.y < -50:
-		velocity.y = -50
-		
-func wall_jump():
-	if is_on_wall() and leftray.is_colliding():
-		velocity.y = JUMP_VELOCITY
-		# left
-		velocity.x = 150
-		#print(norm)
-		#print(velocity)
-	elif is_on_wall() and rightray.is_colliding():
-		velocity.y = JUMP_VELOCITY
-		# right
-		velocity.x = -150
-		#print(velocity)
-		
-func walk():
-	if abs(velocity.y) < 10:
-		sprite.play("Walk_loop")
-	elif velocity.y < -80:
-		sprite.play("upup")
-	#elif velocity.y < -20:
-		#sprite.play("up")
-	elif velocity.y > 80:
-		sprite.play("downdown")
-	#elif velocity.y > 20:
-		#sprite.play("down")
-	animation_lock = true
