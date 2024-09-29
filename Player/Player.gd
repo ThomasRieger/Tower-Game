@@ -8,7 +8,10 @@ const DASH_SPEED = 300.0
 const DASH_LENGHT = 0.1
 
 @onready var dash = $Dash
+@onready var colli = $CollisionShape2D
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
+@onready var leftray = $left_ray
+@onready var rightray= $right_ray
 
 var facing_direction = 0 
 var dash_timer = 0.0
@@ -25,11 +28,11 @@ func _physics_process(delta: float) -> void:
 			velocity.y += GRAVITY * delta
 			
 	# Wall jump
-	if Input.is_action_just_pressed("jump") and is_on_wall():
+	if Input.is_action_pressed("jump") and is_on_wall():
 		wall_jump()
 		
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_pressed("jump") and is_on_floor():
 		jump()
 
 	# Jump control
@@ -52,7 +55,7 @@ func _physics_process(delta: float) -> void:
 	if direction != 0:
 		velocity.x += direction * SPEED * delta *10
 		
-		print(velocity.x)
+		#print(velocity.x)
 		facing_direction = direction
 		if facing_direction == -1:
 			sprite.flip_h = true
@@ -74,11 +77,20 @@ func _physics_process(delta: float) -> void:
 			velocity.x = face * DASH_SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED * delta * 10)
-			if velocity.x != 0:
+			if velocity.x != 0 and abs(velocity.y) < 20:
 				sprite.play("Stoping")
+			elif velocity.y < -80:
+				sprite.play("upup")
+			#elif velocity.y < -20:
+				#sprite.play("up")
+			elif velocity.y > 80:
+				sprite.play("downdown")
+			#elif velocity.y > 20:
+				#sprite.play("down")
 			else:
 				sprite.play("Idle")
 	move_and_slide()
+
 func jump():
 	velocity.y = JUMP_VELOCITY
 	wall_jump()
@@ -88,17 +100,27 @@ func jump_cut():
 		velocity.y = -50
 		
 func wall_jump():
-	if is_on_wall() and Input.is_action_pressed("a"):
+	if is_on_wall() and leftray.is_colliding():
 		velocity.y = JUMP_VELOCITY
 		# left
-		velocity.x = 100
-		print(velocity)
-	elif is_on_wall() and Input.is_action_pressed("d"):
+		velocity.x = 150
+		#print(norm)
+		#print(velocity)
+	elif is_on_wall() and rightray.is_colliding():
 		velocity.y = JUMP_VELOCITY
 		# right
-		velocity.x = -100
-		print(velocity)
+		velocity.x = -150
+		#print(velocity)
 		
 func walk():
-	sprite.play("Walk_loop")
+	if abs(velocity.y) < 10:
+		sprite.play("Walk_loop")
+	elif velocity.y < -80:
+		sprite.play("upup")
+	#elif velocity.y < -20:
+		#sprite.play("up")
+	elif velocity.y > 80:
+		sprite.play("downdown")
+	#elif velocity.y > 20:
+		#sprite.play("down")
 	animation_lock = true

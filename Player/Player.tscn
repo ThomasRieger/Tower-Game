@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://73xvh87ssiju"]
+[gd_scene load_steps=20 format=3 uid="uid://73xvh87ssiju"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_is4dm"]
 [ext_resource type="Texture2D" uid="uid://cwo16wc0c0t7g" path="res://assets/slime_anim1.png" id="3_au3ie"]
 [ext_resource type="PackedScene" uid="uid://rfa5r3ov5b2u" path="res://Player/Movement/Dash.tscn" id="3_ymtc8"]
+[ext_resource type="Texture2D" uid="uid://cyyagriyt1116" path="res://assets/slime_jumpupdown.png" id="4_vwkqf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pkrtw"]
 size = Vector2(19, 10.5)
@@ -42,6 +43,22 @@ region = Rect2(32, 96, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_glbvf"]
 atlas = ExtResource("3_au3ie")
 region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mash"]
+atlas = ExtResource("4_vwkqf")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctlgq"]
+atlas = ExtResource("4_vwkqf")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6raru"]
+atlas = ExtResource("4_vwkqf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubkdi"]
+atlas = ExtResource("4_vwkqf")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_do8vf"]
 animations = [{
@@ -85,7 +102,39 @@ animations = [{
 }],
 "loop": true,
 "name": &"Walk_loop",
-"speed": 6.0
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mash")
+}],
+"loop": true,
+"name": &"down",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctlgq")
+}],
+"loop": true,
+"name": &"downdown",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6raru")
+}],
+"loop": true,
+"name": &"up",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubkdi")
+}],
+"loop": true,
+"name": &"upup",
+"speed": 0.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
@@ -100,7 +149,14 @@ shape = SubResource("RectangleShape2D_pkrtw")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(9, -12)
 sprite_frames = SubResource("SpriteFrames_do8vf")
-animation = &"Stoping"
-frame_progress = 1.0
+animation = &"Walk_loop"
+
+[node name="right_ray" type="RayCast2D" parent="."]
+position = Vector2(18, -9)
+target_position = Vector2(10, 0)
+
+[node name="left_ray" type="RayCast2D" parent="."]
+position = Vector2(0, -9)
+target_position = Vector2(-10, 0)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
