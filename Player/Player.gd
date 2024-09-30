@@ -14,8 +14,6 @@ const DASH_LENGHT = 0.1
 @onready var leftray = $left_ray
 @onready var rightray= $right_ray
 
-@onready var Powerup_Dash = $"../Pickups/Dash_pickup"
-
 # Variable
 var facing_direction = 0 
 var dash_timer = 0.0
@@ -24,16 +22,6 @@ var is_wall_sliding = false
 var wall_sliding_gravity = 100.0
 
 #Powerups
-
-func Dash(delta):
-	if Powerup_Dash.dash_ready:
-		if dash_timer > 0:
-			dash_timer -= delta  # Reduce timer 
-		else:# Dash
-			if Input.is_action_just_pressed("dash") and not Powerup_Dash.is_dashing():
-				Powerup_Dash.start_dash(DASH_LENGHT)
-				dash_timer = 2.0
-	if is_on_floor(): dash_timer = 0.0
 
 func _physics_process(delta: float) -> void:
 # Wall jump.
@@ -46,12 +34,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_released("jump"):
 		jump_cut()
 
-# Dash movement
-	var effective_speed = DASH_SPEED if Powerup_Dash.is_dashing() else SPEED
-
 # Function in use
-	Dash(delta)
-	movement(effective_speed,SPEED,delta)
+	movement(SPEED,delta)
 	move_and_slide()
 	wall_slide(delta)
 	gravity(GRAVITY,FALL_MULTIPLIER,delta)
@@ -113,7 +97,7 @@ func gravity(gra,fallgra,delta):
 		else:  # If jumping up
 			velocity.y += gra * delta
 # Movement
-func movement(effective_speed,spd,delta):
+func movement(spd,delta):
 	var direction := Input.get_axis("a", "d")
 	if direction != 0:
 		velocity.x += direction * spd * delta *10
@@ -122,33 +106,23 @@ func movement(effective_speed,spd,delta):
 		facing_direction = direction
 		if facing_direction == -1:
 			sprite.flip_h = true
-			if Powerup_Dash.is_dashing():
-				velocity.x = -effective_speed
-			else:
-				velocity.x = max(velocity.x , -200)
+			velocity.x = max(velocity.x , -200)
 		else:
 			sprite.flip_h = false
-			if Powerup_Dash.is_dashing():
-				velocity.x = effective_speed
-			else:
-				velocity.x = min(velocity.x , 200)
+			velocity.x = min(velocity.x , 200)
 		walk_animation()
 		
 	else:
-		if Powerup_Dash.is_dashing():
-			var face = facing_direction
-			velocity.x = face * DASH_SPEED
+		velocity.x = move_toward(velocity.x, 0, spd * delta * 10)
+		if velocity.x != 0 and abs(velocity.y) < 20:
+			sprite.play("Stoping")
+		elif velocity.y < -80:
+			sprite.play("upup")
+		#elif velocity.y < -20:
+			#sprite.play("up")
+		elif velocity.y > 80:
+			sprite.play("downdown")
+		#elif velocity.y > 20:
+			#sprite.play("down")
 		else:
-			velocity.x = move_toward(velocity.x, 0, spd * delta * 10)
-			if velocity.x != 0 and abs(velocity.y) < 20:
-				sprite.play("Stoping")
-			elif velocity.y < -80:
-				sprite.play("upup")
-			#elif velocity.y < -20:
-				#sprite.play("up")
-			elif velocity.y > 80:
-				sprite.play("downdown")
-			#elif velocity.y > 20:
-				#sprite.play("down")
-			else:
-				sprite.play("Idle")
+			sprite.play("Idle")
