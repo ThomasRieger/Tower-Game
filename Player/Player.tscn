@@ -1,8 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://73xvh87ssiju"]
+[gd_scene load_steps=19 format=3 uid="uid://73xvh87ssiju"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_is4dm"]
 [ext_resource type="Texture2D" uid="uid://cwo16wc0c0t7g" path="res://assets/slime_anim1.png" id="3_au3ie"]
-[ext_resource type="PackedScene" uid="uid://rfa5r3ov5b2u" path="res://Player/Movement/Dash.tscn" id="3_ymtc8"]
 [ext_resource type="Texture2D" uid="uid://cyyagriyt1116" path="res://assets/slime_jumpupdown.png" id="4_vwkqf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pkrtw"]
@@ -143,8 +142,6 @@ script = ExtResource("1_is4dm")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(9, -6.75)
 shape = SubResource("RectangleShape2D_pkrtw")
-
-[node name="Dash" parent="." instance=ExtResource("3_ymtc8")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(9, -12)

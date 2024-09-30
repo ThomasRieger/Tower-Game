@@ -1,10 +1,8 @@
-[gd_scene load_steps=10 format=4 uid="uid://gdglwyk35qax"]
+[gd_scene load_steps=8 format=4 uid="uid://gdglwyk35qax"]
 
 [ext_resource type="PackedScene" uid="uid://73xvh87ssiju" path="res://Player/Player.tscn" id="1_xthax"]
 [ext_resource type="Texture2D" uid="uid://b87dhenfunxtf" path="res://assets/tower_tile1.png" id="2_2ecq8"]
-[ext_resource type="FontFile" uid="uid://82odygvbe8ns" path="res://assets/SlimeBox-GWMD.ttf" id="3_31a5w"]
 [ext_resource type="PackedScene" uid="uid://cag0i3rcc6u08" path="res://Powerup/Dash_pickup.tscn" id="3_oqcqj"]
-[ext_resource type="Script" path="res://main/Power_Duration.gd" id="3_xebik"]
 
 [sub_resource type="Gradient" id="Gradient_nc1vc"]
 offsets = PackedFloat32Array(0)
@@ -60,23 +58,6 @@ tile_map_data = PackedByteArray("AAD4/wIAAAAAAAAAAAD4/wEAAAAAAAAAAAD4/wAAAAAAAAA
 tile_set = SubResource("TileSet_hegri")
 
 [node name="Pickups" type="Node" parent="."]
-
-[node name="Duration" type="Node" parent="Pickups"]
-script = ExtResource("3_xebik")
-
-[node name="Label" type="Label" parent="Pickups/Duration"]
-offset_left = 158.0
-offset_top = -132.0
-offset_right = 212.0
-offset_bottom = -81.0
-theme_override_colors/font_color = Color(0.682353, 0.466667, 0.32549, 1)
-theme_override_fonts/font = ExtResource("3_31a5w")
-theme_override_font_sizes/font_size = 50
-text = "10"
-
-[node name="Timer" type="Timer" parent="Pickups/Duration"]
-wait_time = 10.0
-one_shot = true
 
 [node name="Dash_pickup" parent="Pickups" instance=ExtResource("3_oqcqj")]
 position = Vector2(81, 82)
