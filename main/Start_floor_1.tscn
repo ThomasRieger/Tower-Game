@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://gdglwyk35qax"]
+[gd_scene load_steps=10 format=4 uid="uid://gdglwyk35qax"]
 
 [ext_resource type="PackedScene" uid="uid://73xvh87ssiju" path="res://Player/Player.tscn" id="1_xthax"]
 [ext_resource type="Texture2D" uid="uid://b87dhenfunxtf" path="res://assets/tower_tile1.png" id="2_2ecq8"]
 [ext_resource type="PackedScene" uid="uid://c8qb13ndct0rj" path="res://Powerup/Powerduration.tscn" id="3_vm83w"]
 [ext_resource type="PackedScene" uid="uid://cag0i3rcc6u08" path="res://Powerup/Dash/Dash_Power.tscn" id="4_lavv7"]
+[ext_resource type="PackedScene" uid="uid://dnov2ubrfedk5" path="res://Powerup/DoubleJump/DoubleJump.tscn" id="5_vryao"]
 
 [sub_resource type="Gradient" id="Gradient_nc1vc"]
 offsets = PackedFloat32Array(0)
@@ -63,10 +64,9 @@ tile_set = SubResource("TileSet_hegri")
 [node name="Powerup" parent="Pickups" instance=ExtResource("3_vm83w")]
 
 [node name="Dash_Power" parent="Pickups/Powerup" instance=ExtResource("4_lavv7")]
-position = Vector2(-148, -22)
 
-[node name="Dash_Power2" parent="Pickups/Powerup" instance=ExtResource("4_lavv7")]
-position = Vector2(102, 73)
+[node name="DoubleJump" parent="Pickups/Powerup" instance=ExtResource("5_vryao")]
+position = Vector2(-203, 78)
 
 [connection signal="dash_ready_signal" from="Pickups/Powerup/Dash_Power" to="Pickups/Powerup" method="_on_dash_power_dash_ready_signal"]
-[connection signal="dash_ready_signal" from="Pickups/Powerup/Dash_Power2" to="Pickups/Powerup" method="_on_dash_power_2_dash_ready_signal"]
+[connection signal="DJ_ready_signal" from="Pickups/Powerup/DoubleJump" to="Pickups/Powerup" method="_on_double_jump_dj_ready_signal"]

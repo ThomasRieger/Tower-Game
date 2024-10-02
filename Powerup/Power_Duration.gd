@@ -46,8 +46,8 @@ func _on_dash_power_dash_ready_signal() -> void:
 		label.visible = true
 
 
-func _on_dash_power_2_dash_ready_signal() -> void:
-# Reset timer
+func _on_double_jump_dj_ready_signal() -> void:
+	# Reset timer
 	timer.stop()
 	power_active = false
 	# Start timer
