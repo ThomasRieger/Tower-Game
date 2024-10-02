@@ -34,6 +34,10 @@ func _process(delta: float) -> void:
 			timer.stop()
 			emit_signal("End_Duration")
 
+func reset_power():
+	power_active = false
+	
+
 # Dash Power
 func _on_dash_power_dash_ready_signal() -> void:
 # Reset timer
@@ -45,9 +49,28 @@ func _on_dash_power_dash_ready_signal() -> void:
 		timer.start(time_start)
 		label.visible = true
 
-
 func _on_double_jump_dj_ready_signal() -> void:
 	# Reset timer
+	timer.stop()
+	power_active = false
+	# Start timer
+	if !power_active:
+		power_active = true
+		timer.start(time_start)
+		label.visible = true
+
+func _on_speed_boost_speed_ready_signal() -> void:
+	# Reset timer
+	timer.stop()
+	power_active = false
+	# Start timer
+	if !power_active:
+		power_active = true
+		timer.start(time_start)
+		label.visible = true
+
+func _on_dash_power_2_dash_ready_signal() -> void:
+# Reset timer
 	timer.stop()
 	power_active = false
 	# Start timer

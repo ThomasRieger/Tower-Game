@@ -60,16 +60,18 @@ collision_layer = 2
 tile_map_data = PackedByteArray("AAD4/wIAAAAAAAAAAAD4/wEAAAAAAAAAAAD4/wAAAAAAAAAAAAD4////AAAAAAAAAAD4//7/AAAAAAAAAAD4//3/AAAAAAAAAAD4//z/AAAAAAAAAAD4//v/AAAAAAAAAAD4//r/AAAAAAAAAAD4//n/AAAAAAAAAAAHAPn/AAAAAAAAAAAHAPr/AAAAAAAAAAAHAPv/AAAAAAAAAAAHAPz/AAAAAAAAAAAHAP3/AAAAAAAAAAAHAP7/AAAAAAAAAAAHAP//AAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAD4/wMAAAABAAIAAAAHAAMAAAABAAIAABD5/wMAAAAAAAAAAFD6/wMAAAAAAAAAAFD7/wMAAAAAAAAAAFD8/wMAAAAAAAAAAFD9/wMAAAAAAAAAAFD+/wMAAAAAAAAAAFD//wMAAAAAAAAAAFAAAAMAAAAAAAAAAFABAAMAAAAAAAAAAFACAAMAAAAAAAAAAFADAAMAAAAAAAAAAFAEAAMAAAAAAAAAAFAFAAMAAAAAAAAAAFAGAAMAAAAAAAAAAFAAAAIAAAABAAEAAAD+/wEAAAABAAEAAAD8/wAAAAACAAEAABD7/wAAAAACAAEAAAD5////AAABAAEAAAA=")
 tile_set = SubResource("TileSet_hegri")
 
-[node name="Powerup" parent="." instance=ExtResource("3_vm83w")]
+[node name="Pickups" type="Node" parent="."]
 
-[node name="Dash_Power" parent="Powerup" instance=ExtResource("4_lavv7")]
+[node name="Powerup" parent="Pickups" instance=ExtResource("3_vm83w")]
 
-[node name="DoubleJump" parent="Powerup" instance=ExtResource("5_vryao")]
+[node name="Dash_Power" parent="Pickups/Powerup" instance=ExtResource("4_lavv7")]
+
+[node name="DoubleJump" parent="Pickups/Powerup" instance=ExtResource("5_vryao")]
 position = Vector2(-203, 78)
 
-[node name="SpeedBoost" parent="Powerup" instance=ExtResource("6_4ky4y")]
+[node name="SpeedBoost" parent="Pickups/Powerup" instance=ExtResource("6_4ky4y")]
 position = Vector2(97, 79)
 
-[connection signal="dash_ready_signal" from="Powerup/Dash_Power" to="Powerup" method="_on_dash_power_dash_ready_signal"]
-[connection signal="DJ_ready_signal" from="Powerup/DoubleJump" to="Powerup" method="_on_double_jump_dj_ready_signal"]
-[connection signal="speed_ready_signal" from="Powerup/SpeedBoost" to="Powerup" method="_on_speed_boost_speed_ready_signal"]
+[connection signal="dash_ready_signal" from="Pickups/Powerup/Dash_Power" to="Pickups/Powerup" method="_on_dash_power_dash_ready_signal"]
+[connection signal="DJ_ready_signal" from="Pickups/Powerup/DoubleJump" to="Pickups/Powerup" method="_on_double_jump_dj_ready_signal"]
+[connection signal="speed_ready_signal" from="Pickups/Powerup/SpeedBoost" to="Pickups/Powerup" method="_on_speed_boost_speed_ready_signal"]

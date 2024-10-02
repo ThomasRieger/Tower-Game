@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=4 uid="uid://dyuqiy241xgtg"]
+[gd_scene load_steps=7 format=4 uid="uid://dyuqiy241xgtg"]
 
-[ext_resource type="Texture2D" uid="uid://cwo16wc0c0t7g" path="res://assets/slime_anim1.png" id="2_cfsav"]
 [ext_resource type="Texture2D" uid="uid://b87dhenfunxtf" path="res://assets/tower_tile1.png" id="2_inid5"]
 [ext_resource type="Script" path="res://Main_Menu/Main_animations.gd" id="2_t4xm2"]
 
@@ -37,28 +36,6 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_4jywv")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ka8q2"]
-atlas = ExtResource("2_cfsav")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7fxyc"]
-atlas = ExtResource("2_cfsav")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_cye1u"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ka8q2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7fxyc")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 2.0
-}]
-
 [node name="Map" type="Node2D"]
 position = Vector2(0, 18)
 
@@ -81,8 +58,3 @@ tile_set = SubResource("TileSet_hegri")
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(-196, 77)
 script = ExtResource("2_t4xm2")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
-position = Vector2(-2, 2)
-sprite_frames = SubResource("SpriteFrames_cye1u")
-animation = &"idle"

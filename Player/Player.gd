@@ -15,8 +15,9 @@ const POWTIME = 0.1
 @onready var rightray= $right_ray
 
 # Power ups
-@onready var dash = $"../Pickups/Powerup/Dash_Power"
-@onready var dj = $"../Pickups/Powerup/DoubleJump"
+@onready var dash = $"../Powerup/Dash_Power"
+@onready var dj = $"../Powerup/DoubleJump"
+@onready var speeding = $"../Powerup/SpeedBoost"
 
 # Variable
 var facing_direction = 0 
@@ -26,6 +27,7 @@ var is_wall_sliding = false
 var wall_sliding_gravity = 100.0
 var effective_speed = SPEED
 var can_DJ = false
+var can_SP = false
 
 func _physics_process(delta: float) -> void:
 # Wall jump.
@@ -43,8 +45,10 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		can_DJ = false
 		power_timer = 0.0
+
 # ------------------- Dash Powerup -----------------------------#
-# Dash Power 
+
+# Dash
 	if dash.dash_ready:
 		if power_timer > 0:
 			power_timer -= delta  # Reduce timer 
@@ -55,7 +59,7 @@ func _physics_process(delta: float) -> void:
 					power_timer = 2.0
 	effective_speed = DASH_SPEED if dash.is_dashing() else SPEED
 
-#DoubleJump
+# DoubleJump
 	if dj.DJ_ready:
 		if power_timer > 0:
 			power_timer -= delta  # Reduce timer 
@@ -65,14 +69,27 @@ func _physics_process(delta: float) -> void:
 				power_timer = 2.0
 				jump()
 				can_DJ = false
-	
+
+# SpeedBoost
+	if speeding.SP_ready:
+		if power_timer > 0:
+			power_timer -= delta  # Reduce timer 
+		else:
+			if velocity.x != 0:
+				dj.start_dj(POWTIME)
+				power_timer = 2.0
+			movement(delta,effective_speed,200)	
+	else:
+		movement(delta,effective_speed,100)
+
 # ------------------- Function in use -------------------------#
-	movement(delta,effective_speed)
+
 	move_and_slide()
 	wall_slide(delta)
 	gravity(GRAVITY,FALL_MULTIPLIER,delta)
 
 #--------------------------Functions--------------------------#
+
 # Jump
 func jump():
 	velocity.y = JUMP_VELOCITY
@@ -129,7 +146,7 @@ func gravity(gra,fallgra,delta):
 		else:  # If jumping up
 			velocity.y += gra * delta
 # Movement
-func movement(delta,dspd):
+func movement(delta,dspd,SPD):
 	var direction := Input.get_axis("a", "d")
 	if direction != 0:
 		velocity.x += direction * dspd * delta *10
@@ -139,13 +156,13 @@ func movement(delta,dspd):
 			if dash.is_dashing():
 				velocity.x = -dspd
 			else:
-				velocity.x = max(velocity.x , -200)
+				velocity.x = max(velocity.x , -SPD)
 		else:
 			sprite.flip_h = false
 			if dash.is_dashing():
 				velocity.x = dspd
 			else:
-				velocity.x = min(velocity.x , 200)
+				velocity.x = min(velocity.x , SPD)
 		walk_animation()
 	else:
 		if dash.is_dashing():
