@@ -1,33 +1,32 @@
 extends CharacterBody2D
 
 # Constant
-const SPEED = 50.0
+const SPEED = 150.0
 const JUMP_VELOCITY = -250.0
 const GRAVITY = 500.0
 const FALL_MULTIPLIER = 1.5
-const DASH_SPEED = 300.0
+const DASH_SPEED = 400.0
 const POWTIME = 0.1
 
 # Nodes
 @onready var colli = $CollisionShape2D
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var leftray = $left_ray
-@onready var rightray= $right_ray
+@onready var rightray = $right_ray
 
 # Power ups
-@onready var dash = $"../Powerup/Dash_Power"
-@onready var dj = $"../Powerup/DoubleJump"
-@onready var speeding = $"../Powerup/SpeedBoost"
+#@onready var dash = $"../Powerup/Dash_Power"
+#@onready var dj = $"../Powerup/DoubleJump"
+#@onready var speeding = $"../Powerup/SpeedBoost"
 
 # Variable
 var facing_direction = 0 
-var power_timer = 0.0
 var animation_lock : bool = false
 var is_wall_sliding = false
 var wall_sliding_gravity = 100.0
-var effective_speed = SPEED
-var can_DJ = false
-var can_SP = false
+#var effective_speed = SPEED
+var jump_num = 2
+#var can_SP = false
 
 func _physics_process(delta: float) -> void:
 # Wall jump.
@@ -35,64 +34,57 @@ func _physics_process(delta: float) -> void:
 		wall_jump()
 # Jump
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		can_DJ = true
 		jump()
+		jump_num = 1
+	elif is_on_floor():
+		jump_num = 2
 # Jump control
 	if Input.is_action_just_released("jump"):
-		can_DJ = true
 		jump_cut()
-# Ground Resets
-	if is_on_floor():
-		can_DJ = false
-		power_timer = 0.0
 
 # ------------------- Dash Powerup -----------------------------#
 
 # Dash
-	if dash.dash_ready:
-		if power_timer > 0:
-			power_timer -= delta  # Reduce timer 
+	if global.dash:
+		if Input.is_action_pressed("dash") and abs(velocity.x) <= SPEED:
+			global.is_dash = true
 		else:
-			# Dash
-				if Input.is_action_pressed("dash") and not dash.is_dashing():
-					dash.start_dash(POWTIME)
-					power_timer = 2.0
-	effective_speed = DASH_SPEED if dash.is_dashing() else SPEED
+			global.is_dash = false
 
 # DoubleJump
-	if dj.DJ_ready:
-		if power_timer > 0:
-			power_timer -= delta  # Reduce timer 
-		else:
-			if Input.is_action_just_pressed("jump") and !is_on_floor() and can_DJ and not dj.is_djing():
-				dj.start_dj(POWTIME)
-				power_timer = 2.0
-				jump()
-				can_DJ = false
-
-# SpeedBoost
-	if speeding.SP_ready:
-		if power_timer > 0:
-			power_timer -= delta  # Reduce timer 
-		else:
-			if velocity.x != 0:
-				dj.start_dj(POWTIME)
-				power_timer = 2.0
-			movement(delta,effective_speed,200)	
-	else:
-		movement(delta,effective_speed,100)
+	if global.double_jump:
+		if Input.is_action_just_pressed("jump") and !is_on_floor() and jump_num >= 1:
+			jump()
+			jump_num = 0
+		#if power_timer > 0:
+			#power_timer -= delta  # Reduce timer 
+		#else:
+#
+## SpeedBoost
+	#if speeding.SP_ready:
+		#if power_timer > 0:
+			#power_timer -= delta  # Reduce timer 
+		#else:
+			#if velocity.x != 0:
+				#dj.start_dj(POWTIME)
+				#power_timer = 2.0
+			#movement(delta)	
+	movement(delta)
 
 # ------------------- Function in use -------------------------#
 
 	move_and_slide()
 	wall_slide(delta)
-	gravity(GRAVITY,FALL_MULTIPLIER,delta)
+	gravity(delta)
 
 #--------------------------Functions--------------------------#
 
 # Jump
 func jump():
-	velocity.y = JUMP_VELOCITY
+	if global.speed_boost > 1:
+		velocity.y = JUMP_VELOCITY * 1.5
+	else:
+		velocity.y = JUMP_VELOCITY
 	wall_jump()
 # Short jump
 func jump_cut():
@@ -100,30 +92,21 @@ func jump_cut():
 		velocity.y = -50
 # Wall jump
 func wall_jump():
-	if is_on_wall() and leftray.is_colliding():
+	if is_on_wall() and leftray.is_colliding() and global.wall_jump:
 		velocity.y = JUMP_VELOCITY
 		# left
-		velocity.x = 150
+		velocity.x = 180
 		#print(norm)
 		#print(velocity)
-	elif is_on_wall() and rightray.is_colliding():
+	elif is_on_wall() and rightray.is_colliding() and global.wall_jump:
 		velocity.y = JUMP_VELOCITY
 		# right
-		velocity.x = -150
+		velocity.x = -180
 		#print(velocity)
 # Walk animation
 func walk_animation():
-	if abs(velocity.y) < 10:
+	if abs(velocity.x) > 0 and sprite.animation != "Walk_loop" and abs(velocity.y) < 2:
 		sprite.play("Walk_loop")
-	elif velocity.y < -80:
-		sprite.play("upup")
-	#elif velocity.y < -20:
-		#sprite.play("up")
-	elif velocity.y > 80:
-		sprite.play("downdown")
-	#elif velocity.y > 20:
-		#sprite.play("down")
-	animation_lock = true
 # Wall Slide
 func wall_slide(delta):
 	if is_on_wall() and !is_on_floor():
@@ -134,51 +117,59 @@ func wall_slide(delta):
 	else:
 		is_wall_sliding = false
 	if is_wall_sliding:
+		sprite.play("downdown")
 		velocity.y += wall_sliding_gravity * delta
 		velocity.y = min(velocity.y, wall_sliding_gravity)
 # Gravity
-func gravity(gra,fallgra,delta):
+func gravity(delta):
 	if not is_on_floor():
 		if velocity.y > 0:  # If falling
-			velocity.y += gra * fallgra * delta
+			velocity.y += GRAVITY * FALL_MULTIPLIER * delta
 			# max falling speed
 			velocity.y = min(velocity.y, 500)
 		else:  # If jumping up
-			velocity.y += gra * delta
+			velocity.y += GRAVITY * delta
 # Movement
-func movement(delta,dspd,SPD):
+func movement(delta):
 	var direction := Input.get_axis("a", "d")
-	if direction != 0:
-		velocity.x += direction * dspd * delta *10
-		facing_direction = direction
-		if facing_direction == -1:
+	
+	if sprite.flip_h and global.is_dash and !leftray.is_colliding() and jump_num >= 1:
+		jump_num -= 1
+		velocity.x = -DASH_SPEED * global.speed_boost
+		velocity.y -= 100
+		global.is_dash = false
+		#print(global.dash)
+	elif !sprite.flip_h and global.is_dash and !rightray.is_colliding() and jump_num >= 1:
+		jump_num -= 1
+		velocity.x = DASH_SPEED * global.speed_boost
+		velocity.y -= 100
+		global.is_dash = false
+	walk_animation()
+	if direction != 0 and abs(velocity.x) < SPEED * global.speed_boost:
+		velocity.x += direction * SPEED * delta * 10 * global.speed_boost
+		if direction == -1:
 			sprite.flip_h = true
-			if dash.is_dashing():
-				velocity.x = -dspd
-			else:
-				velocity.x = max(velocity.x , -SPD)
 		else:
 			sprite.flip_h = false
-			if dash.is_dashing():
-				velocity.x = dspd
-			else:
-				velocity.x = min(velocity.x , SPD)
-		walk_animation()
 	else:
-		if dash.is_dashing():
-			var face = facing_direction
-			velocity.x = face * DASH_SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED * delta * 10)
-			if velocity.x != 0 and abs(velocity.y) < 20:
-				sprite.play("Stoping")
-			elif velocity.y < -80:
-				sprite.play("upup")
-			#elif velocity.y < -20:
-				#sprite.play("up")
-			elif velocity.y > 80:
-				sprite.play("downdown")
-			#elif velocity.y > 20:
-				#sprite.play("down")
-			else:
-				sprite.play("Idle")	
+		#if global.dash:
+			#var face = facing_direction
+			#velocity.x = face * DASH_SPEED
+		#else:
+		velocity.x = move_toward(velocity.x, 0, (delta * abs(velocity.x) * 1.2) + 7)
+		#velocity.x = move_toward(velocity.x, 0, delta * abs(velocity.x) * 100)
+		if abs(velocity.x) < 2 and velocity.y == 0:
+			sprite.play("Idle")
+			#print(velocity.x)
+		elif abs(velocity.y) < 1 and direction == 0:
+			sprite.play("Stoping")
+		elif velocity.y < -80:
+			sprite.play("upup")
+		#elif velocity.y < -20:
+			#sprite.play("up")
+		elif velocity.y > 80:
+			sprite.play("downdown")
+			#print(velocity.y)
+		#elif velocity.y > 20:
+			#sprite.play("down")
+	#print(sprite.animation)

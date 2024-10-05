@@ -1,11 +1,14 @@
-[gd_scene load_steps=11 format=4 uid="uid://gdglwyk35qax"]
+[gd_scene load_steps=14 format=4 uid="uid://gdglwyk35qax"]
 
+[ext_resource type="Script" path="res://main/start_floor_1.gd" id="1_08a6g"]
+[ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="1_aq8g7"]
 [ext_resource type="PackedScene" uid="uid://73xvh87ssiju" path="res://Player/Player.tscn" id="1_xthax"]
 [ext_resource type="Texture2D" uid="uid://b87dhenfunxtf" path="res://assets/tower_tile1.png" id="2_2ecq8"]
-[ext_resource type="PackedScene" uid="uid://c8qb13ndct0rj" path="res://Powerup/Powerduration.tscn" id="3_vm83w"]
 [ext_resource type="PackedScene" uid="uid://cag0i3rcc6u08" path="res://Powerup/Dash/Dash_Power.tscn" id="4_lavv7"]
-[ext_resource type="PackedScene" uid="uid://dnov2ubrfedk5" path="res://Powerup/DoubleJump/DoubleJump.tscn" id="5_vryao"]
-[ext_resource type="PackedScene" uid="uid://cydy72e7ui8k8" path="res://Powerup/SpeedBoost/SpeedBoost.tscn" id="6_4ky4y"]
+[ext_resource type="Texture2D" uid="uid://luofy5xxs7tm" path="res://assets/power_icon1.png" id="5_xyxby"]
+[ext_resource type="PackedScene" uid="uid://dnov2ubrfedk5" path="res://Powerup/DoubleJump/DoubleJump.tscn" id="7_ins6j"]
+[ext_resource type="PackedScene" uid="uid://cydy72e7ui8k8" path="res://Powerup/SpeedBoost/SpeedBoost.tscn" id="8_wesn7"]
+[ext_resource type="PackedScene" uid="uid://xmuh15dq2xbe" path="res://Powerup/WallJump/WallJump.tscn" id="9_gvdbw"]
 
 [sub_resource type="Gradient" id="Gradient_nc1vc"]
 offsets = PackedFloat32Array(0)
@@ -31,9 +34,10 @@ texture_region_size = Vector2i(32, 32)
 2:1/0 = 0
 2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -7.9375, -16, -7.9375)
 0:2/0 = 0
-0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -8, -16, -8.125)
 1:2/0 = 0
 1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(11.875, -16, 11.75, -12.1875, 16, -12.0625, 16, -16)
+2:2/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_hegri"]
 tile_size = Vector2i(32, 32)
@@ -42,34 +46,125 @@ physics_layer_0/collision_mask = 7
 sources/0 = SubResource("TileSetAtlasSource_4jywv")
 
 [node name="LV1" type="Node2D"]
-
-[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("1_08a6g")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -2025.0
-offset_top = -1395.0
+offset_top = -1454.0
 offset_right = 2356.0
-offset_bottom = 1215.0
+offset_bottom = 1156.0
 texture = SubResource("GradientTexture1D_f60od")
 
-[node name="Player" parent="." instance=ExtResource("1_xthax")]
-position = Vector2(187, -187)
-collision_layer = 2
-
 [node name="Tiles" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD4/wIAAAAAAAAAAAD4/wEAAAAAAAAAAAD4/wAAAAAAAAAAAAD4////AAAAAAAAAAD4//7/AAAAAAAAAAD4//3/AAAAAAAAAAD4//z/AAAAAAAAAAD4//v/AAAAAAAAAAD4//r/AAAAAAAAAAD4//n/AAAAAAAAAAAHAPn/AAAAAAAAAAAHAPr/AAAAAAAAAAAHAPv/AAAAAAAAAAAHAPz/AAAAAAAAAAAHAP3/AAAAAAAAAAAHAP7/AAAAAAAAAAAHAP//AAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAD4/wMAAAABAAIAAAAHAAMAAAABAAIAABD5/wMAAAAAAAAAAFD6/wMAAAAAAAAAAFD7/wMAAAAAAAAAAFD8/wMAAAAAAAAAAFD9/wMAAAAAAAAAAFD+/wMAAAAAAAAAAFD//wMAAAAAAAAAAFAAAAMAAAAAAAAAAFABAAMAAAAAAAAAAFACAAMAAAAAAAAAAFADAAMAAAAAAAAAAFAEAAMAAAAAAAAAAFAFAAMAAAAAAAAAAFAGAAMAAAAAAAAAAFAAAAIAAAABAAEAAAD+/wEAAAABAAEAAAD8/wAAAAACAAEAABD7/wAAAAACAAEAAAD5////AAABAAEAAAA=")
+tile_map_data = PackedByteArray("AAD8/wAAAAACAAEAABD7/wAAAAACAAEAAAD5////AAAAAAAAAAD5//n/AAAAAAAAAAD5//r/AAAAAAAAAAD5//v/AAAAAAAAAAD5//z/AAAAAAAAAAD5//3/AAAAAAAAAAD5//7/AAAAAAAAAAD5/wAAAAAAAAAAAAD5/wEAAAAAAAAAAAD5/wIAAAAAAAAAAAD5/wMAAAACAAIAAAAEAPz/AAAAAAIAAAADAPz/AAACAAEAAAAFAPz/AAAAAAIAAAAGAAMAAAACAAIAABAGAAIAAAAAAAAAADAGAAEAAAAAAAAAADAGAAAAAAAAAAAAADAGAP//AAAAAAAAADAGAP7/AAAAAAAAADAGAP3/AAAAAAAAADAGAPz/AAAAAAAAABAGAPv/AAAAAAAAABAGAPr/AAAAAAAAABAGAPn/AAAAAAAAABD6/wMAAAAAAAAAAGD7/wMAAAAAAAAAAGD8/wMAAAAAAAAAAGD9/wMAAAAAAAAAAGD+/wMAAAAAAAAAAGD//wMAAAAAAAAAAGAAAAMAAAAAAAAAAGABAAMAAAAAAAAAAGACAAMAAAAAAAAAAGADAAMAAAAAAAAAAGAEAAMAAAAAAAAAAGAFAAMAAAAAAAAAAGD5//T/AAAAAAAAAAD5//X/AAAAAAAAAAD5//b/AAAAAAAAAAD5//f/AAAAAAAAAAD5//j/AAAAAAAAAAD5//D/AAAAAAAAAAD5//H/AAAAAAAAAAD5//L/AAAAAAAAAAD5//P/AAAAAAAAAAD5/+r/AAAAAAAAAAD5/+v/AAAAAAAAAAD5/+z/AAAAAAAAAAD5/+3/AAAAAAAAAAD5/+7/AAAAAAAAAAD5/+//AAAAAAAAAAD5/+P/AAAAAAAAAAD5/+T/AAAAAAAAAAD5/+X/AAAAAAAAAAD5/+b/AAAAAAAAAAD5/+f/AAAAAAAAAAD5/+j/AAAAAAAAAAD5/+n/AAAAAAAAAAD5/9v/AAAAAAAAAAD5/9z/AAAAAAAAAAD5/93/AAAAAAAAAAD5/97/AAAAAAAAAAD5/9//AAAAAAAAAAD5/+D/AAAAAAAAAAD5/+H/AAAAAAAAAAD5/+L/AAAAAAAAAAAGAPL/AAAAAAAAABAGAPP/AAAAAAAAABAGAPT/AAAAAAAAABAGAPX/AAAAAAAAABAGAPb/AAAAAAAAABAGAPf/AAAAAAAAABAGAPj/AAAAAAAAABAGAOf/AAAAAAAAABAGAOj/AAAAAAAAABAGAOn/AAAAAAAAABAGAOr/AAAAAAAAABAGAOv/AAAAAAAAABAGAOz/AAAAAAAAABAGAO3/AAAAAAAAABAGAO7/AAAAAAAAABAGAO//AAAAAAAAABAGAPD/AAAAAAAAABAGAPH/AAAAAAAAABAGAN3/AAAAAAAAABAGAN7/AAAAAAAAABAGAN//AAAAAAAAABAGAOD/AAAAAAAAABAGAOH/AAAAAAAAABAGAOL/AAAAAAAAABAGAOP/AAAAAAAAABAGAOT/AAAAAAAAABAGAOX/AAAAAAAAABAGAOb/AAAAAAAAABAGANv/AAAAAAAAABAGANz/AAAAAAAAABD6//P/AAAAAAIAAAD7//P/AAAAAAIAAAD8//P/AAAAAAIAAAD9//P/AAACAAEAABADAPP/AAABAAEAAAADAAEAAAAAAAEAABACAAEAAAAAAAEAAAD9/+f/AAACAAEAAAD+/+f/AAAAAAIAAAD//+f/AAAAAAIAAAAAAOf/AAAAAAIAAAABAOf/AAAAAAIAAAACAOf/AAAAAAIAAAADAOf/AAAAAAIAAAAEAOf/AAAAAAIAAAAFAOf/AAAAAAIAAAABAP3/AAABAAAAAAAFAPH/AAAAAAIAAAAEAPH/AAAAAAIAAAADAPH/AAACAAEAAAD//+7/AAACAAEAABD+/+7/AAAAAAIAAAD9/+7/AAAAAAIAAAD8/+7/AAAAAAIAAAD7/+7/AAAAAAIAAAD6/+7/AAAAAAIAAAD7/+r/AAABAAAAAAD7/+j/AAABAAAAAAD7/+z/AAABAAAAAAA=")
 tile_set = SubResource("TileSet_hegri")
 
-[node name="Powerup" parent="." instance=ExtResource("3_vm83w")]
+[node name="Dash_Power" parent="." instance=ExtResource("4_lavv7")]
+position = Vector2(114, 69)
 
-[node name="Dash_Power" parent="Powerup" instance=ExtResource("4_lavv7")]
+[node name="Player" parent="." instance=ExtResource("1_xthax")]
+position = Vector2(-147, 96)
 
-[node name="DoubleJump" parent="Powerup" instance=ExtResource("5_vryao")]
-position = Vector2(-203, 78)
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("1_aq8g7")
 
-[node name="SpeedBoost" parent="Powerup" instance=ExtResource("6_4ky4y")]
-position = Vector2(97, 79)
+[node name="power_ups" type="Node2D" parent="."]
 
-[connection signal="dash_ready_signal" from="Powerup/Dash_Power" to="Powerup" method="_on_dash_power_dash_ready_signal"]
-[connection signal="DJ_ready_signal" from="Powerup/DoubleJump" to="Powerup" method="_on_double_jump_dj_ready_signal"]
-[connection signal="speed_ready_signal" from="Powerup/SpeedBoost" to="Powerup" method="_on_speed_boost_speed_ready_signal"]
+[node name="dash_icon" type="Sprite2D" parent="power_ups"]
+visible = false
+position = Vector2(-217, -115)
+texture = ExtResource("5_xyxby")
+vframes = 4
+frame = 3
+
+[node name="Label" type="Label" parent="power_ups/dash_icon"]
+offset_left = -18.0
+offset_top = 3.0
+offset_right = 22.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(0.682353, 0.466667, 0.32549, 1)
+theme_override_font_sizes/font_size = 10
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="power_ups/dash_icon"]
+offset_left = -18.0
+offset_top = -24.0
+offset_right = 22.0
+offset_bottom = -1.0
+theme_override_colors/font_color = Color(0.682353, 0.466667, 0.32549, 1)
+theme_override_font_sizes/font_size = 7
+text = "Shift"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="djump_icon" type="Sprite2D" parent="power_ups"]
+visible = false
+position = Vector2(217, -115)
+texture = ExtResource("5_xyxby")
+vframes = 4
+frame = 2
+
+[node name="Label" type="Label" parent="power_ups/djump_icon"]
+offset_left = -18.0
+offset_top = 5.0
+offset_right = 22.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.682353, 0.466667, 0.32549, 1)
+theme_override_font_sizes/font_size = 10
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="speed_icon" type="Sprite2D" parent="power_ups"]
+visible = false
+position = Vector2(-217, 110)
+texture = ExtResource("5_xyxby")
+vframes = 4
+
+[node name="Label" type="Label" parent="power_ups/speed_icon"]
+offset_left = -18.0
+offset_top = 5.0
+offset_right = 22.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.682353, 0.466667, 0.32549, 1)
+theme_override_font_sizes/font_size = 10
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="wall_icon" type="Sprite2D" parent="power_ups"]
+visible = false
+position = Vector2(217, 110)
+texture = ExtResource("5_xyxby")
+vframes = 4
+frame = 1
+
+[node name="Label" type="Label" parent="power_ups/wall_icon"]
+offset_left = -18.0
+offset_top = 5.0
+offset_right = 22.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.682353, 0.466667, 0.32549, 1)
+theme_override_font_sizes/font_size = 10
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DoubleJump" parent="." instance=ExtResource("7_ins6j")]
+position = Vector2(-126, -28)
+
+[node name="WallJump" parent="." instance=ExtResource("9_gvdbw")]
+position = Vector2(120, -151)
+
+[node name="SpeedBoost" parent="." instance=ExtResource("8_wesn7")]
+position = Vector2(111, -435)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 32.0
+offset_top = -832.0
+offset_right = 72.0
+offset_bottom = -809.0
+theme_override_colors/font_color = Color(0.682353, 0.466667, 0.32549, 1)
+text = "YOU WIN"

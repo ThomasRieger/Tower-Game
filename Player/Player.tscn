@@ -146,7 +146,7 @@ shape = SubResource("RectangleShape2D_pkrtw")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(9, -12)
 sprite_frames = SubResource("SpriteFrames_do8vf")
-animation = &"Walk_loop"
+animation = &"Idle"
 
 [node name="right_ray" type="RayCast2D" parent="."]
 position = Vector2(18, -9)
@@ -155,5 +155,3 @@ target_position = Vector2(10, 0)
 [node name="left_ray" type="RayCast2D" parent="."]
 position = Vector2(0, -9)
 target_position = Vector2(-10, 0)
-
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

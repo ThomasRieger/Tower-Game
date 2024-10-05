@@ -9,7 +9,7 @@ var flying = false
 
 func _physics_process(delta: float) -> void:
 	timer += delta
-	if !global.double_jump:
+	if !global.wall_jump:
 		visible = true
 		colli.disabled = false
 	else:
@@ -33,8 +33,8 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player" && visible:
-		global.double_jump = true
-		global.power_time[1] = global.power_dur
+		global.wall_jump = true
+		global.power_time[3] = global.power_dur
 		await get_tree().create_timer(0.01).timeout
 		visible = false
 		colli.disabled = true
