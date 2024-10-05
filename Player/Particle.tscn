@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b6fh6l3x1kj0e"]
+
+[node name="Particle" type="Node2D"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+initial_velocity_max = 291.67

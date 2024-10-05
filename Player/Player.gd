@@ -158,18 +158,18 @@ func movement(delta):
 		#else:
 		velocity.x = move_toward(velocity.x, 0, (delta * abs(velocity.x) * 1.2) + 7)
 		#velocity.x = move_toward(velocity.x, 0, delta * abs(velocity.x) * 100)
-		if abs(velocity.x) < 2 and velocity.y == 0:
-			sprite.play("Idle")
-			#print(velocity.x)
-		elif abs(velocity.y) < 1 and direction == 0:
-			sprite.play("Stoping")
-		elif velocity.y < -80:
-			sprite.play("upup")
-		#elif velocity.y < -20:
-			#sprite.play("up")
-		elif velocity.y > 80:
-			sprite.play("downdown")
-			#print(velocity.y)
-		#elif velocity.y > 20:
-			#sprite.play("down")
-	#print(sprite.animation)
+	if abs(velocity.x) < 2 and velocity.y == 0:
+		sprite.play("Idle")
+		#print(velocity.x)
+	elif abs(velocity.y) < 1 and direction == 0:
+		sprite.play("Stoping")
+	elif velocity.y < -80:
+		sprite.play("upup")
+	#elif velocity.y < -20:
+		#sprite.play("up")
+	elif velocity.y > 80:
+		sprite.play("downdown")
+		#print(velocity.y)
+	#elif velocity.y > 20:
+		#sprite.play("down")
+#print(sprite.animation)
