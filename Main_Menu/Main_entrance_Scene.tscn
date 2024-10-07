@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://dyuqiy241xgtg"]
+[gd_scene load_steps=10 format=4 uid="uid://cf3m11e8ktkvv"]
 
 [ext_resource type="Texture2D" uid="uid://1vpmmahv0617" path="res://assets/Tower-Tiles.png" id="2_d5jox"]
 [ext_resource type="Texture2D" uid="uid://b87dhenfunxtf" path="res://assets/tower_tile1.png" id="2_inid5"]
+[ext_resource type="Texture2D" uid="uid://no2uisgaljbc" path="res://assets/title screen 2.png" id="3_wfcqt"]
+[ext_resource type="Texture2D" uid="uid://cwo16wc0c0t7g" path="res://assets/slime_anim1.png" id="4_xlies"]
 
 [sub_resource type="Gradient" id="Gradient_nc1vc"]
 offsets = PackedFloat32Array(0)
@@ -65,6 +67,7 @@ position = Vector2(0, -20)
 zoom = Vector2(0.95, 0.95)
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 offset_left = -2029.0
 offset_top = -1328.0
 offset_right = 2352.0
@@ -72,6 +75,17 @@ offset_bottom = 1282.0
 texture = SubResource("GradientTexture1D_f60od")
 
 [node name="towertile" type="TileMapLayer" parent="."]
+visible = false
 position = Vector2(4, -6)
 tile_map_data = PackedByteArray("AAD4/wIAAQABAAEAAAD4/wEAAQABAAEAAAD4/wAAAQABAAEAAAD4////AQABAAEAAAD4//7/AQABAAEAAAD4//3/AQABAAEAAAD4//z/AQABAAEAAAD4//v/AQABAAEAAAD4//r/AQABAAEAAAD4//n/AQABAAEAAAAHAPn/AQABAAEAAAAHAPr/AQABAAEAAAAHAPv/AQABAAEAAAAHAPz/AQABAAEAAAAHAP3/AQABAAEAAAAHAP7/AQABAAEAAAAHAP//AQABAAEAAAAHAAAAAQABAAEAAAAHAAEAAQABAAEAAAAHAAIAAQABAAEAAAD4/wMAAQADAAEAAAD5/wMAAQACAAEAAAD6/wMAAQACAAEAAAD7/wMAAQACAAEAAAD8/wMAAQACAAEAAAD9/wMAAQACAAEAAAD+/wMAAQACAAEAAAD//wMAAQACAAEAAAAAAAMAAQACAAEAAAABAAMAAQACAAEAAAACAAMAAQACAAEAAAADAAMAAQACAAEAAAAEAAMAAQACAAEAAAAGAPj/AQACAAEAAAAFAPj/AQACAAEAAAAEAPj/AQACAAEAAAADAPj/AQACAAEAAAACAPj/AQACAAEAAAABAPj/AQACAAEAAAAAAPj/AQACAAEAAAD///j/AQACAAEAAAD+//j/AQACAAEAAAD9//j/AQACAAEAAAD8//j/AQACAAEAAAD7//j/AQACAAEAAAD6//j/AQACAAEAAAD5//j/AQACAAEAAAD4//j/AQAAAAIAAAAHAPj/AQABAAIAAAAHAAMAAQACAAIAAAAGAAMAAQACAAEAAAAFAAMAAQACAAEAAAA=")
 tile_set = SubResource("TileSet_hegri")
+
+[node name="title_bottom" type="Sprite2D" parent="."]
+position = Vector2(0, -405)
+texture = ExtResource("3_wfcqt")
+
+[node name="SlimeAnim1" type="Sprite2D" parent="."]
+position = Vector2(-100, 101)
+texture = ExtResource("4_xlies")
+hframes = 2
+vframes = 6

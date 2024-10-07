@@ -23,7 +23,7 @@ var jump_num = 2
 
 func _physics_process(delta: float) -> void:
 # Wall jump.
-	if Input.is_action_just_pressed("jump") and is_on_wall():
+	if Input.is_action_pressed("jump") and is_on_wall():
 		wall_jump()
 # Jump
 	if Input.is_action_just_pressed("jump") and is_on_floor():

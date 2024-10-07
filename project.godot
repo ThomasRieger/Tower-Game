@@ -21,6 +21,7 @@ boot_splash/use_filter=false
 [autoload]
 
 global="*res://main/global.gd"
+SceneTransition="*res://scene_transition.tscn"
 
 [display]
 
