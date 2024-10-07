@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://bqyoih2a0ustl"]
+[gd_scene load_steps=13 format=4 uid="uid://bqyoih2a0ustl"]
 
 [ext_resource type="PackedScene" uid="uid://73xvh87ssiju" path="res://Player/Player.tscn" id="1_r5kq6"]
 [ext_resource type="Texture2D" uid="uid://b87dhenfunxtf" path="res://assets/tower_tile1.png" id="2_86g10"]
 [ext_resource type="Script" path="res://Main_Menu/After_Start/Area_Start.gd" id="3_5f26e"]
+[ext_resource type="Texture2D" uid="uid://21d23epjsgst" path="res://assets/Door.png" id="3_r6u8p"]
+[ext_resource type="Texture2D" uid="uid://1vpmmahv0617" path="res://assets/Tower-Tiles.png" id="4_m0ow2"]
 
 [sub_resource type="Gradient" id="Gradient_nc1vc"]
 offsets = PackedFloat32Array(0)
@@ -33,13 +35,47 @@ texture_region_size = Vector2i(32, 32)
 1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(11.875, -16, 11.75, -12.1875, 16, -12.0625, 16, -16)
 2:2/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tbv3d"]
+texture = ExtResource("3_r6u8p")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pqq2s"]
+texture = ExtResource("4_m0ow2")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -7.75, -16, -7.75)
+2:3/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_hegri"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_4jywv")
+sources/1 = SubResource("TileSetAtlasSource_tbv3d")
+sources/2 = SubResource("TileSetAtlasSource_pqq2s")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4c5kt"]
-size = Vector2(64, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5utd"]
+size = Vector2(41.4543, 70.2879)
 
 [node name="Map" type="Node2D"]
 position = Vector2(0, 18)
@@ -60,15 +96,17 @@ position = Vector2(-197, -178)
 
 [node name="towertile" type="TileMapLayer" parent="."]
 position = Vector2(4, -6)
-tile_map_data = PackedByteArray("AAD4/wIAAAAAAAAAAAD4/wEAAAAAAAAAAAD4/wAAAAAAAAAAAAD4////AAAAAAAAAAD4//7/AAAAAAAAAAD4//3/AAAAAAAAAAD4//z/AAAAAAAAAAD4//v/AAAAAAAAAAD4//r/AAAAAAAAAAD4//n/AAAAAAAAAAD4/wMAAAACAAIAAAD5/wMAAAAAAAAAAGD6/wMAAAAAAAAAAGD7/wMAAAAAAAAAAGD8/wMAAAAAAAAAAGD9/wMAAAAAAAAAAGD+/wMAAAAAAAAAAGD//wMAAAAAAAAAAGAAAAMAAAAAAAAAAGABAAMAAAAAAAAAAGACAAMAAAAAAAAAAGADAAMAAAAAAAAAAGAEAAMAAAAAAAAAAGAGAPj/AAAAAAAAAFAFAPj/AAAAAAAAAFAEAPj/AAAAAAAAAFADAPj/AAAAAAAAAFACAPj/AAAAAAAAAFABAPj/AAAAAAAAAFAAAPj/AAAAAAAAAFD///j/AAAAAAAAAFD+//j/AAAAAAAAAFD9//j/AAAAAAAAAFD8//j/AAAAAAAAAFD7//j/AAAAAAAAAFD6//j/AAAAAAAAAFD5//j/AAAAAAAAAFD4//j/AAACAAIAACAHAP//AAAAAAAAABAHAP7/AAAAAAAAABAHAP3/AAAAAAAAABAHAPz/AAAAAAAAABAHAPv/AAAAAAAAABAHAPr/AAAAAAAAABAHAPn/AAAAAAAAABAHAAIAAAAAAAAAABAHAAEAAAAAAAAAABAHAAAAAAAAAAAAABAHAPj/AAACAAIAADA=")
+tile_map_data = PackedByteArray("AAD4/wIAAgABAAMAAFD4/wEAAgABAAMAAFD4/wAAAgABAAMAAFD4////AgABAAMAAFD4//7/AgABAAMAAFD4//3/AgABAAMAAFD4//z/AgABAAMAAFD4//r/AgABAAMAAFD5/wMAAgABAAMAAAD6/wMAAgABAAMAAAD7/wMAAgABAAMAAAD8/wMAAgABAAMAAAD9/wMAAgABAAMAAAD+/wMAAgABAAMAAAD//wMAAgABAAMAAAAAAAMAAgABAAMAAAABAAMAAgABAAMAAAACAAMAAgABAAMAAAADAAMAAgABAAMAAAAEAAMAAgABAAMAAAAHAP//AgABAAMAAGAHAP7/AgABAAMAAGAHAP3/AgABAAMAAGAHAPz/AgABAAMAAGAHAPv/AgABAAMAAGAHAPr/AgABAAMAAGAHAAIAAgABAAMAAGAHAAEAAgABAAMAAGAHAAAAAgABAAMAAGD4//v/AgABAAMAAFA=")
 tile_set = SubResource("TileSet_hegri")
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(197, 132)
+position = Vector2(197, 86)
+rotation = -1.57987
 script = ExtResource("3_5f26e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1, 0)
-shape = SubResource("RectangleShape2D_4c5kt")
+position = Vector2(-11.0086, 0.900145)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_h5utd")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

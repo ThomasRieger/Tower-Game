@@ -14,23 +14,16 @@ const POWTIME = 0.1
 @onready var leftray = $left_ray
 @onready var rightray = $right_ray
 
-# Power ups
-#@onready var dash = $"../Powerup/Dash_Power"
-#@onready var dj = $"../Powerup/DoubleJump"
-#@onready var speeding = $"../Powerup/SpeedBoost"
-
 # Variable
 var facing_direction = 0 
 var animation_lock : bool = false
 var is_wall_sliding = false
 var wall_sliding_gravity = 100.0
-#var effective_speed = SPEED
 var jump_num = 2
-#var can_SP = false
 
 func _physics_process(delta: float) -> void:
 # Wall jump.
-	if Input.is_action_pressed("jump") and is_on_wall():
+	if Input.is_action_just_pressed("jump") and is_on_wall():
 		wall_jump()
 # Jump
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -38,6 +31,7 @@ func _physics_process(delta: float) -> void:
 		jump_num = 1
 	elif is_on_floor():
 		jump_num = 2
+	
 # Jump control
 	if Input.is_action_just_released("jump"):
 		jump_cut()
@@ -47,28 +41,17 @@ func _physics_process(delta: float) -> void:
 # Dash
 	if global.dash:
 		if Input.is_action_pressed("dash") and abs(velocity.x) <= SPEED:
+			$ParticlesDash.emitting = true
 			global.is_dash = true
 		else:
 			global.is_dash = false
 
 # DoubleJump
 	if global.double_jump:
+			
 		if Input.is_action_just_pressed("jump") and !is_on_floor() and jump_num >= 1:
 			jump()
 			jump_num = 0
-		#if power_timer > 0:
-			#power_timer -= delta  # Reduce timer 
-		#else:
-#
-## SpeedBoost
-	#if speeding.SP_ready:
-		#if power_timer > 0:
-			#power_timer -= delta  # Reduce timer 
-		#else:
-			#if velocity.x != 0:
-				#dj.start_dj(POWTIME)
-				#power_timer = 2.0
-			#movement(delta)	
 	movement(delta)
 
 # ------------------- Function in use -------------------------#
@@ -81,6 +64,7 @@ func _physics_process(delta: float) -> void:
 
 # Jump
 func jump():
+	$ParticlesJump.emitting = true
 	if global.speed_boost > 1:
 		velocity.y = JUMP_VELOCITY * 1.5
 	else:
@@ -99,6 +83,7 @@ func wall_jump():
 		#print(norm)
 		#print(velocity)
 	elif is_on_wall() and rightray.is_colliding() and global.wall_jump:
+
 		velocity.y = JUMP_VELOCITY
 		# right
 		velocity.x = -180
@@ -120,6 +105,14 @@ func wall_slide(delta):
 		sprite.play("downdown")
 		velocity.y += wall_sliding_gravity * delta
 		velocity.y = min(velocity.y, wall_sliding_gravity)
+	# Particle
+	if leftray.is_colliding() and is_wall_sliding:
+		$ParticlesWallSlide_L.emitting = true
+	elif rightray.is_colliding() and is_wall_sliding:
+		$ParticlesWallSlide_R.emitting = true
+	else:
+		$ParticlesWallSlide_L.emitting = false
+		$ParticlesWallSlide_R.emitting = false		
 # Gravity
 func gravity(delta):
 	if not is_on_floor():
@@ -145,6 +138,8 @@ func movement(delta):
 		velocity.y -= 100
 		global.is_dash = false
 	walk_animation()
+	if velocity.x != 0 and is_on_floor():
+		$ParticlesMove.emitting = true
 	if direction != 0 and abs(velocity.x) < SPEED * global.speed_boost:
 		velocity.x += direction * SPEED * delta * 10 * global.speed_boost
 		if direction == -1:
@@ -157,6 +152,7 @@ func movement(delta):
 			#velocity.x = face * DASH_SPEED
 		#else:
 		velocity.x = move_toward(velocity.x, 0, (delta * abs(velocity.x) * 1.2) + 7)
+		$ParticlesMove.emitting = false
 		#velocity.x = move_toward(velocity.x, 0, delta * abs(velocity.x) * 100)
 	if abs(velocity.x) < 2 and velocity.y == 0:
 		sprite.play("Idle")

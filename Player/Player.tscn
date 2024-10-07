@@ -1,8 +1,14 @@
-[gd_scene load_steps=19 format=3 uid="uid://73xvh87ssiju"]
+[gd_scene load_steps=21 format=3 uid="uid://73xvh87ssiju"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_is4dm"]
 [ext_resource type="Texture2D" uid="uid://cwo16wc0c0t7g" path="res://assets/slime_anim1.png" id="3_au3ie"]
 [ext_resource type="Texture2D" uid="uid://cyyagriyt1116" path="res://assets/slime_jumpupdown.png" id="4_vwkqf"]
+[ext_resource type="Texture2D" uid="uid://c52cv34kdt2jw" path="res://assets/Effect.png" id="4_wmvch"]
+
+[sub_resource type="Curve" id="Curve_1egim"]
+min_value = -2.23517e-10
+_data = [Vector2(0.0211864, 1), 0.0, 0.0, 0, 0, Vector2(0.504237, -2.23517e-10), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pkrtw"]
 size = Vector2(19, 10.5)
@@ -138,6 +144,97 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_is4dm")
+
+[node name="ParticlesMove" type="CPUParticles2D" parent="."]
+position = Vector2(9, -4)
+amount = 50
+fract_delta = false
+draw_order = 1
+texture = ExtResource("4_wmvch")
+emission_shape = 4
+emission_points = PackedVector2Array()
+emission_colors = PackedColorArray()
+particle_flag_align_y = true
+gravity = Vector2(0, 25)
+initial_velocity_min = 15.0
+initial_velocity_max = 15.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_1egim")
+
+[node name="ParticlesDash" type="CPUParticles2D" parent="."]
+position = Vector2(9, -4)
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+fract_delta = false
+draw_order = 1
+texture = ExtResource("4_wmvch")
+emission_shape = 4
+emission_points = PackedVector2Array()
+emission_colors = PackedColorArray()
+particle_flag_align_y = true
+direction = Vector2(0, 0)
+gravity = Vector2(0, 25)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_1egim")
+
+[node name="ParticlesWallSlide_R" type="CPUParticles2D" parent="."]
+position = Vector2(14, -6)
+amount = 15
+fract_delta = false
+draw_order = 1
+texture = ExtResource("4_wmvch")
+emission_shape = 4
+emission_points = PackedVector2Array()
+emission_colors = PackedColorArray()
+particle_flag_align_y = true
+direction = Vector2(0, 0)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 15.0
+initial_velocity_max = 15.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_1egim")
+
+[node name="ParticlesWallSlide_L" type="CPUParticles2D" parent="."]
+position = Vector2(3, -7)
+amount = 15
+fract_delta = false
+draw_order = 1
+texture = ExtResource("4_wmvch")
+emission_shape = 4
+emission_points = PackedVector2Array()
+emission_colors = PackedColorArray()
+particle_flag_align_y = true
+direction = Vector2(0, 0)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 15.0
+initial_velocity_max = 15.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_1egim")
+
+[node name="ParticlesJump" type="CPUParticles2D" parent="."]
+position = Vector2(9, 0)
+emitting = false
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("4_wmvch")
+direction = Vector2(0, -1)
+spread = 100.0
+gravity = Vector2(0, 10)
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+scale_amount_min = 0.5
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_1egim")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(9, -6.75)
