@@ -118,13 +118,15 @@ position = Vector2(114, 69)
 position = Vector2(-159, 95)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -6)
+zoom = Vector2(0.9, 0.9)
 script = ExtResource("1_aq8g7")
 
 [node name="power_ups" type="Node2D" parent="."]
 
 [node name="dash_icon" type="Sprite2D" parent="power_ups"]
 visible = false
-position = Vector2(-217, -115)
+position = Vector2(-246, -115)
 texture = ExtResource("5_xyxby")
 vframes = 4
 frame = 3
@@ -153,7 +155,7 @@ vertical_alignment = 1
 
 [node name="djump_icon" type="Sprite2D" parent="power_ups"]
 visible = false
-position = Vector2(217, -115)
+position = Vector2(245, -115)
 texture = ExtResource("5_xyxby")
 vframes = 4
 frame = 2
@@ -171,7 +173,7 @@ vertical_alignment = 1
 
 [node name="speed_icon" type="Sprite2D" parent="power_ups"]
 visible = false
-position = Vector2(-217, 110)
+position = Vector2(-246, 110)
 texture = ExtResource("5_xyxby")
 vframes = 4
 
@@ -188,7 +190,7 @@ vertical_alignment = 1
 
 [node name="wall_icon" type="Sprite2D" parent="power_ups"]
 visible = false
-position = Vector2(217, 110)
+position = Vector2(244, 110)
 texture = ExtResource("5_xyxby")
 vframes = 4
 frame = 1
