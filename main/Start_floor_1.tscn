@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://gdglwyk35qax"]
+[gd_scene load_steps=20 format=4 uid="uid://gdglwyk35qax"]
 
 [ext_resource type="Script" path="res://main/start_floor_1.gd" id="1_08a6g"]
 [ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="1_aq8g7"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cydy72e7ui8k8" path="res://Powerup/SpeedBoost/SpeedBoost.tscn" id="8_wesn7"]
 [ext_resource type="PackedScene" uid="uid://xmuh15dq2xbe" path="res://Powerup/WallJump/WallJump.tscn" id="9_gvdbw"]
 [ext_resource type="PackedScene" uid="uid://bso2iaanrou5s" path="res://Traps/Spiketrap.tscn" id="12_t08hy"]
+[ext_resource type="PackedScene" uid="uid://hytqsr07vg4c" path="res://Enemy/Enemy.tscn" id="13_4u65a"]
 
 [sub_resource type="Gradient" id="Gradient_nc1vc"]
 offsets = PackedFloat32Array(0)
@@ -223,10 +224,6 @@ position = Vector2(-32, 82)
 [node name="Spiketrap3" parent="Traps" instance=ExtResource("12_t08hy")]
 position = Vector2(-80, -14)
 
-[node name="Spiketrap4" parent="Traps" instance=ExtResource("12_t08hy")]
-position = Vector2(178, -146)
-rotation = -1.5708
-
 [node name="Spiketrap5" parent="Traps" instance=ExtResource("12_t08hy")]
 position = Vector2(-144, -14)
 
@@ -256,3 +253,8 @@ position = Vector2(176, -494)
 [node name="Spiketrap13" parent="Traps" instance=ExtResource("12_t08hy")]
 position = Vector2(-178, -655)
 rotation = 1.5708
+
+[node name="Enemy" type="Node" parent="."]
+
+[node name="Enemy2" parent="Enemy" instance=ExtResource("13_4u65a")]
+position = Vector2(160, -157)
