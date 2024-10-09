@@ -13,6 +13,9 @@ const POWTIME = 0.1
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var leftray = $left_ray
 @onready var rightray = $right_ray
+@export var sfx_walk : AudioStream
+@export var sfx_jump : AudioStream
+var footstep_frame : Array = [0,3]
 
 # Variable
 var facing_direction = 0 
@@ -65,6 +68,8 @@ func _physics_process(delta: float) -> void:
 # Jump
 func jump():
 	$ParticlesJump.emitting = true
+	load_sfx(sfx_jump)
+	%sfx_player.play()
 	if global.speed_boost > 1:
 		velocity.y = JUMP_VELOCITY * 1.5
 	else:
@@ -173,3 +178,20 @@ func movement(delta):
 
 func _on_bullet_bullet_destroyed() -> void:
 	pass # Replace with function body.
+
+#--------------------------Sounds--------------------------#
+func load_sfx(sfx_to_load):
+	if %sfx_player.stream != sfx_to_load:
+		%sfx_player.stop()
+		%sfx_player.stream = sfx_to_load
+		
+	
+
+func _on_animated_sprite_2d_frame_changed() -> void:
+	if sprite.animation == "Idle": return
+	if sprite.animation == "Stopping": return
+	if sprite.animation == "upup": return
+	if sprite.animation == "downdown": return
+	load_sfx(sfx_walk)
+	if sprite.frame in footstep_frame and velocity.x != 0 and is_on_floor():
+		%sfx_player.play()
