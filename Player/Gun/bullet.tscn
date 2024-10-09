@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://hhj6fxgedvpe"]
+[gd_scene load_steps=5 format=3 uid="uid://hhj6fxgedvpe"]
 
 [ext_resource type="Script" path="res://Player/Gun/Bullet.gd" id="1_xe0if"]
 [ext_resource type="Texture2D" uid="uid://bivy0jeeje574" path="res://assets/Bullet.png" id="2_fi6fk"]
@@ -6,6 +6,10 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kn8r6"]
 radius = 5.0
 height = 13.3333
+
+[sub_resource type="Curve" id="Curve_njfla"]
+_data = [Vector2(0.0106383, 1), 0.0, 0.0, 0, 0, Vector2(0.25, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Bullet" type="Area2D"]
 collision_layer = 2
@@ -27,6 +31,21 @@ vframes = 2
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0.500001, -0.5)
 scale = Vector2(0.45, 0.25)
+
+[node name="Splash" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 10
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(-1, 0)
+spread = 65.67
+gravity = Vector2(0, 0)
+initial_velocity_min = 134.87
+initial_velocity_max = 163.72
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_njfla")
+color = Color(0.745098, 0.47451, 0.458824, 1)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
