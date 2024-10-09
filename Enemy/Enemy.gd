@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-
-var speed = -60.0
+var health = 3
+var speed = -40.0
 
 func _ready() -> void:
 	$AnimationPlayer.play("Run")
@@ -43,3 +43,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		get_parent().get_parent().get_node("Player").visible = false
 		await get_tree().create_timer(0.001).timeout
 		SceneTransition.change_scene("res://main/Start_floor_1.tscn")
+
+func take_damage(damage: int):
+	health -= damage
+	if health <= 0:
+		queue_free()

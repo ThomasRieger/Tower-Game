@@ -169,3 +169,7 @@ func movement(delta):
 	#elif velocity.y > 20:
 		#sprite.play("down")
 #print(sprite.animation)
+
+
+func _on_bullet_bullet_destroyed() -> void:
+	pass # Replace with function body.

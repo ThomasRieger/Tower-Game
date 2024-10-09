@@ -256,7 +256,7 @@ position = Vector2(176, -494)
 position = Vector2(-178, -655)
 rotation = 1.5708
 
-[node name="Enemy" type="Node" parent="."]
+[node name="Mobs" type="Node" parent="."]
 
-[node name="Enemy2" parent="Enemy" instance=ExtResource("13_4u65a")]
+[node name="Enemy" parent="Mobs" instance=ExtResource("13_4u65a")]
 position = Vector2(160, -157)
