@@ -217,12 +217,6 @@ position = Vector2(111, -435)
 
 [node name="Traps" type="Node" parent="."]
 
-[node name="Spiketrap" parent="Traps" instance=ExtResource("12_t08hy")]
-position = Vector2(0, 82)
-
-[node name="Spiketrap2" parent="Traps" instance=ExtResource("12_t08hy")]
-position = Vector2(-32, 82)
-
 [node name="Spiketrap3" parent="Traps" instance=ExtResource("12_t08hy")]
 position = Vector2(-80, -14)
 
