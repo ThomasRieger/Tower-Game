@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=3 uid="uid://73xvh87ssiju"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_is4dm"]
-[ext_resource type="AudioStream" uid="uid://c4tc6b8irxihi" path="res://assets/sound/walk.wav" id="2_rdma7"]
+[ext_resource type="AudioStream" uid="uid://beo5iljeq776q" path="res://assets/sound/slimeWalk4.wav" id="2_bcldt"]
 [ext_resource type="Script" path="res://Player/Hand.gd" id="2_wx6cq"]
 [ext_resource type="Texture2D" uid="uid://cwo16wc0c0t7g" path="res://assets/slime_anim1.png" id="3_au3ie"]
 [ext_resource type="AudioStream" uid="uid://jicbihsx6txb" path="res://assets/sound/jump.wav" id="3_grq6t"]
@@ -147,7 +147,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_is4dm")
-sfx_walk = ExtResource("2_rdma7")
+sfx_walk = ExtResource("2_bcldt")
 sfx_jump = ExtResource("3_grq6t")
 
 [node name="ParticlesMove" type="CPUParticles2D" parent="."]
@@ -248,8 +248,7 @@ shape = SubResource("RectangleShape2D_pkrtw")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(9, -12)
 sprite_frames = SubResource("SpriteFrames_do8vf")
-animation = &"Idle"
-frame_progress = 0.0515306
+animation = &"Walk_loop"
 
 [node name="right_ray" type="RayCast2D" parent="."]
 position = Vector2(18, -9)
