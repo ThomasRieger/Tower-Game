@@ -15,6 +15,8 @@ const POWTIME = 0.1
 @onready var rightray = $right_ray
 @export var sfx_walk : AudioStream
 @export var sfx_jump : AudioStream
+@export var sfx_wallJump : AudioStream
+@export var sfx_dash : AudioStream
 var footstep_frame : Array = [0,3]
 
 # Variable
@@ -43,9 +45,12 @@ func _physics_process(delta: float) -> void:
 
 # Dash
 	if global.dash:
-		if Input.is_action_pressed("dash") and abs(velocity.x) <= SPEED:
-			$ParticlesDash.emitting = true
-			global.is_dash = true
+		if Input.is_action_pressed("dash"):
+			if global.is_dash == false and jump_num > 0:
+				load_sfx(sfx_dash)
+				%sfx_player.play()
+				$ParticlesDash.emitting = true
+				global.is_dash = true
 		else:
 			global.is_dash = false
 
@@ -81,6 +86,9 @@ func jump_cut():
 		velocity.y = -50
 # Wall jump
 func wall_jump():
+	if is_on_wall() and global.wall_jump:
+		load_sfx(sfx_wallJump)
+		%sfx_player.play()
 	if is_on_wall() and leftray.is_colliding() and global.wall_jump:
 		velocity.y = JUMP_VELOCITY
 		# left
