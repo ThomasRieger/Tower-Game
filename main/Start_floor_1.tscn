@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://gdglwyk35qax"]
+[gd_scene load_steps=22 format=4 uid="uid://gdglwyk35qax"]
 
 [ext_resource type="Script" path="res://main/start_floor_1.gd" id="1_08a6g"]
 [ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="1_aq8g7"]
@@ -11,8 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://dnov2ubrfedk5" path="res://Powerup/DoubleJump/DoubleJump.tscn" id="7_ins6j"]
 [ext_resource type="PackedScene" uid="uid://cydy72e7ui8k8" path="res://Powerup/SpeedBoost/SpeedBoost.tscn" id="8_wesn7"]
 [ext_resource type="PackedScene" uid="uid://xmuh15dq2xbe" path="res://Powerup/WallJump/WallJump.tscn" id="9_gvdbw"]
+[ext_resource type="AudioStream" uid="uid://chh4ecahs325e" path="res://assets/sound/powerUp.wav" id="10_ffm7k"]
 [ext_resource type="PackedScene" uid="uid://bso2iaanrou5s" path="res://Traps/Spiketrap.tscn" id="12_t08hy"]
 [ext_resource type="PackedScene" uid="uid://hytqsr07vg4c" path="res://Enemy/Enemy.tscn" id="13_4u65a"]
+[ext_resource type="PackedScene" uid="uid://cicobqfijtyqs" path="res://assets/sound/sfx_player.tscn" id="14_ncwhb"]
 
 [sub_resource type="Gradient" id="Gradient_nc1vc"]
 offsets = PackedFloat32Array(0)
@@ -113,6 +115,7 @@ tile_set = SubResource("TileSet_hegri")
 
 [node name="Dash_Power" parent="." instance=ExtResource("4_lavv7")]
 position = Vector2(114, 69)
+sfx_powerUp = ExtResource("10_ffm7k")
 
 [node name="Player" parent="." instance=ExtResource("1_xthax")]
 position = Vector2(-159, 95)
@@ -208,6 +211,7 @@ vertical_alignment = 1
 
 [node name="DoubleJump" parent="." instance=ExtResource("7_ins6j")]
 position = Vector2(-126, -28)
+sfx_powerUp = ExtResource("10_ffm7k")
 
 [node name="WallJump" parent="." instance=ExtResource("9_gvdbw")]
 position = Vector2(120, -151)
@@ -257,3 +261,6 @@ position = Vector2(98, 12)
 
 [node name="Enemy" parent="Mobs" instance=ExtResource("13_4u65a")]
 position = Vector2(160, -157)
+
+[node name="sfx_player" parent="." instance=ExtResource("14_ncwhb")]
+unique_name_in_owner = true

@@ -45,10 +45,9 @@ func _physics_process(delta: float) -> void:
 
 # Dash
 	if global.dash:
-		if Input.is_action_pressed("dash"):
+		if Input.is_action_pressed("dash") and abs(velocity.x) <= SPEED:
 			if global.is_dash == false and jump_num > 0:
-				load_sfx(sfx_dash)
-				%sfx_player.play()
+				play_sfx(sfx_dash)
 				$ParticlesDash.emitting = true
 				global.is_dash = true
 		else:
@@ -73,8 +72,7 @@ func _physics_process(delta: float) -> void:
 # Jump
 func jump():
 	$ParticlesJump.emitting = true
-	load_sfx(sfx_jump)
-	%sfx_player.play()
+	play_sfx(sfx_jump)
 	if global.speed_boost > 1:
 		velocity.y = JUMP_VELOCITY * 1.5
 	else:
@@ -87,8 +85,7 @@ func jump_cut():
 # Wall jump
 func wall_jump():
 	if is_on_wall() and global.wall_jump:
-		load_sfx(sfx_wallJump)
-		%sfx_player.play()
+		play_sfx(sfx_wallJump)
 	if is_on_wall() and leftray.is_colliding() and global.wall_jump:
 		velocity.y = JUMP_VELOCITY
 		# left
@@ -193,7 +190,9 @@ func load_sfx(sfx_to_load):
 		%sfx_player.stop()
 		%sfx_player.stream = sfx_to_load
 		
-	
+func play_sfx(sfx_to_play):
+	load_sfx(sfx_to_play)
+	%sfx_player.play()
 
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if sprite.animation == "Idle": return
@@ -203,3 +202,4 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	load_sfx(sfx_walk)
 	if sprite.frame in footstep_frame and velocity.x != 0 and is_on_floor():
 		%sfx_player.play()
+		

@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://cn5dmu7wntvox"
-path="res://.godot/imported/walk2.wav-458528313134187542b0f68a7fac93df.sample"
+uid="uid://cgtqvwxy5ryne"
+path="res://.godot/imported/bulletHit.wav-97d954d247ee4e07536bca8b15e75843.sample"
 
 [deps]
 
-source_file="res://assets/sound/walk2.wav"
-dest_files=["res://.godot/imported/walk2.wav-458528313134187542b0f68a7fac93df.sample"]
+source_file="res://assets/sound/gun/bulletHit.wav"
+dest_files=["res://.godot/imported/bulletHit.wav-97d954d247ee4e07536bca8b15e75843.sample"]
 
 [params]
 
