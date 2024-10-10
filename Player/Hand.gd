@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 			can_shoot = true
 			Cooldown = 0.0
 		
-	if Input.is_action_just_pressed("fire") and can_shoot:
+	if Input.is_action_just_pressed("fire") and can_shoot and Engine.time_scale != 0:
 		fire()
 		AudioController.sfx_fire()
 		can_shoot = false

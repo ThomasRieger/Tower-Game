@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cyyagriyt1116" path="res://assets/slime_jumpupdown.png" id="4_vwkqf"]
 [ext_resource type="Texture2D" uid="uid://c52cv34kdt2jw" path="res://assets/Effect.png" id="4_wmvch"]
 [ext_resource type="AudioStream" uid="uid://bs8x103bcayo0" path="res://assets/sound/dash1.wav" id="5_oeb4l"]
-[ext_resource type="PackedScene" uid="uid://cicobqfijtyqs" path="res://assets/sound/sfx_player.tscn" id="10_vy4da"]
+[ext_resource type="PackedScene" path="res://assets/sound/sfx_player.tscn" id="10_vy4da"]
 
 [sub_resource type="Curve" id="Curve_1egim"]
 min_value = -2.23517e-10

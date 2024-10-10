@@ -13,6 +13,7 @@ extends Node2D
 var paused = false
 
 func _ready() -> void:
+	$Attempts.text = "Attempt %d" % global.death
 	#BgmPlayer.play_music_level()	
 	#BgmPlayer.play()
 	AudioController.play_bgm()

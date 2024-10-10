@@ -16,8 +16,10 @@ func _on_restart_pressed() -> void:
 	global.wall_jump = false
 	global.power_dur = 10
 	global.power_time = [0, 0, 0, 0]
+	global.death += 1
 	
 func _on_quit_pressed() -> void:
 	main.pause_menu()
 	SceneTransition.change_scene("res://Main_Menu/Main_Menu.tscn")
 	AudioController.stop_bgm()
+	global.death = 0

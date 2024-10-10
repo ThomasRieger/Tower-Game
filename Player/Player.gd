@@ -28,17 +28,17 @@ var jump_num = 2
 
 func _physics_process(delta: float) -> void:
 # Wall jump.
-	if Input.is_action_pressed("jump") and is_on_wall():
+	if Input.is_action_pressed("jump") and is_on_wall() and Engine.time_scale != 0:
 		wall_jump()
 # Jump
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor() and Engine.time_scale != 0:
 		jump()
 		jump_num = 1
 	elif is_on_floor():
 		jump_num = 2
 	
 # Jump control
-	if Input.is_action_just_released("jump"):
+	if Input.is_action_just_released("jump") and Engine.time_scale != 0:
 		jump_cut()
 
 # ------------------- Dash Powerup -----------------------------#
@@ -56,7 +56,7 @@ func _physics_process(delta: float) -> void:
 # DoubleJump
 	if global.double_jump:
 			
-		if Input.is_action_just_pressed("jump") and !is_on_floor() and jump_num >= 1:
+		if Input.is_action_just_pressed("jump") and !is_on_floor() and jump_num >= 1 and Engine.time_scale != 0:
 			jump()
 			jump_num = 0
 	movement(delta)
@@ -152,9 +152,9 @@ func movement(delta):
 		$ParticlesMove.emitting = true
 	if direction != 0 and abs(velocity.x) < SPEED * global.speed_boost:
 		velocity.x += direction * SPEED * delta * 10 * global.speed_boost
-		if direction == -1:
+		if direction == -1 and Engine.time_scale != 0:
 			sprite.flip_h = true
-		else:
+		elif direction == 1 and Engine.time_scale != 0:
 			sprite.flip_h = false
 	else:
 		#if global.dash:
@@ -179,10 +179,6 @@ func movement(delta):
 	#elif velocity.y > 20:
 		#sprite.play("down")
 #print(sprite.animation)
-
-
-func _on_bullet_bullet_destroyed() -> void:
-	pass # Replace with function body.
 
 #--------------------------Sounds--------------------------#
 func load_sfx(sfx_to_load):
