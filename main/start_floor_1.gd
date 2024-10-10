@@ -8,6 +8,8 @@ extends Node2D
 @onready var speed_icon = $"power_ups/speed_icon"
 @onready var wall_label = $"power_ups/wall_icon/Label"
 @onready var wall_icon = $"power_ups/wall_icon"
+func _ready() -> void:
+	BgmPlayer.play_music_level()	
 
 func _physics_process(delta: float) -> void:
 	if global.dash:
