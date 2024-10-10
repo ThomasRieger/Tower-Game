@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://8jyrjm0dihk"]
+
+[ext_resource type="Texture2D" uid="uid://co80dfvfms77o" path="res://Random_Gen/rand_wall.png" id="1_3wcvv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nav1e"]
+size = Vector2(8, 32)
+
+[node name="brick5ver" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3wcvv")
+hframes = 3
+vframes = 3
+frame = 3
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_nav1e")

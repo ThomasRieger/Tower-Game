@@ -1,0 +1,92 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo0s75yjnn6cb"]
+
+[ext_resource type="PackedScene" uid="uid://b3ohqbqaep7ns" path="res://Random_Gen/brick1.tscn" id="4_gf4mq"]
+[ext_resource type="PackedScene" uid="uid://c3nt7pqs1r6de" path="res://Random_Gen/spike2.tscn" id="5_r8ecr"]
+
+[node name="room3" type="Node2D"]
+
+[node name="brick1" parent="." instance=ExtResource("4_gf4mq")]
+
+[node name="brick2" parent="." instance=ExtResource("4_gf4mq")]
+position = Vector2(-90, -50)
+
+[node name="brick3" parent="." instance=ExtResource("4_gf4mq")]
+position = Vector2(90, -50)
+
+[node name="brick4" parent="." instance=ExtResource("4_gf4mq")]
+position = Vector2(-180, -100)
+
+[node name="brick5" parent="." instance=ExtResource("4_gf4mq")]
+position = Vector2(180, -100)
+
+[node name="brick6" parent="." instance=ExtResource("4_gf4mq")]
+position = Vector2(-90, 0)
+
+[node name="brick7" parent="." instance=ExtResource("4_gf4mq")]
+position = Vector2(-180, 0)
+
+[node name="brick8" parent="." instance=ExtResource("4_gf4mq")]
+position = Vector2(90, 0)
+
+[node name="brick9" parent="." instance=ExtResource("4_gf4mq")]
+position = Vector2(180, 0)
+
+[node name="brick10" parent="." instance=ExtResource("4_gf4mq")]
+position = Vector2(0, -50)
+
+[node name="brick11" parent="." instance=ExtResource("4_gf4mq")]
+position = Vector2(180, -50)
+
+[node name="brick12" parent="." instance=ExtResource("4_gf4mq")]
+position = Vector2(-180, -50)
+
+[node name="brick13" parent="." instance=ExtResource("4_gf4mq")]
+position = Vector2(0, -100)
+
+[node name="brick14" parent="." instance=ExtResource("4_gf4mq")]
+position = Vector2(90, -100)
+
+[node name="brick15" parent="." instance=ExtResource("4_gf4mq")]
+position = Vector2(-90, -100)
+
+[node name="spike2" parent="." instance=ExtResource("5_r8ecr")]
+position = Vector2(90, -20)
+
+[node name="spike3" parent="." instance=ExtResource("5_r8ecr")]
+position = Vector2(-90, -20)
+
+[node name="spike4" parent="." instance=ExtResource("5_r8ecr")]
+position = Vector2(0, -70)
+
+[node name="spike5" parent="." instance=ExtResource("5_r8ecr")]
+position = Vector2(180, -70)
+
+[node name="spike6" parent="." instance=ExtResource("5_r8ecr")]
+position = Vector2(-180, -70)
+
+[node name="spike7" parent="." instance=ExtResource("5_r8ecr")]
+position = Vector2(-90, -120)
+
+[node name="spike8" parent="." instance=ExtResource("5_r8ecr")]
+position = Vector2(90, -120)
+
+[node name="brick16" parent="." instance=ExtResource("4_gf4mq")]
+position = Vector2(-90, -150)
+
+[node name="brick17" parent="." instance=ExtResource("4_gf4mq")]
+position = Vector2(-180, -150)
+
+[node name="brick18" parent="." instance=ExtResource("4_gf4mq")]
+position = Vector2(180, -150)
+
+[node name="brick19" parent="." instance=ExtResource("4_gf4mq")]
+position = Vector2(90, -150)
+
+[node name="brick20" parent="." instance=ExtResource("4_gf4mq")]
+position = Vector2(0, -150)
+
+[node name="spike9" parent="." instance=ExtResource("5_r8ecr")]
+position = Vector2(180, -170)
+
+[node name="spike10" parent="." instance=ExtResource("5_r8ecr")]
+position = Vector2(-180, -170)

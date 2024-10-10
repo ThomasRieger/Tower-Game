@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=3 uid="uid://bou48nqmsokyd"]
+
+[ext_resource type="PackedScene" uid="uid://dydlmpyha6vq3" path="res://Random_Gen/brick4.tscn" id="1_hgaww"]
+[ext_resource type="PackedScene" uid="uid://ddfjm837ke2mt" path="res://Random_Gen/brick2.tscn" id="2_i7fw6"]
+[ext_resource type="PackedScene" uid="uid://dgr4tmjidvwet" path="res://Random_Gen/brick3.tscn" id="3_ei3g1"]
+[ext_resource type="PackedScene" uid="uid://bd246b7dlkwpv" path="res://Random_Gen/block1.tscn" id="4_kq2fv"]
+[ext_resource type="PackedScene" uid="uid://b3ohqbqaep7ns" path="res://Random_Gen/brick1.tscn" id="5_ic3rw"]
+[ext_resource type="PackedScene" uid="uid://digws1ony81cd" path="res://Random_Gen/spike3.tscn" id="6_4k2qx"]
+
+[node name="room12" type="Node2D"]
+
+[node name="brick4" parent="." instance=ExtResource("1_hgaww")]
+position = Vector2(-94, -25)
+rotation = 0.785398
+
+[node name="brick2" parent="." instance=ExtResource("2_i7fw6")]
+position = Vector2(-12, -79)
+rotation = -0.785398
+
+[node name="brick3" parent="." instance=ExtResource("3_ei3g1")]
+position = Vector2(116, -98)
+rotation = -0.785398
+
+[node name="brick5" parent="." instance=ExtResource("2_i7fw6")]
+position = Vector2(69, -3)
+rotation = -0.785398
+
+[node name="brick6" parent="." instance=ExtResource("1_hgaww")]
+position = Vector2(8, -189)
+rotation = 0.785398
+
+[node name="block1" parent="." instance=ExtResource("4_kq2fv")]
+position = Vector2(-98, -137)
+rotation = 0.785398
+
+[node name="brick1" parent="." instance=ExtResource("5_ic3rw")]
+position = Vector2(-151, -205)
+rotation = 0.785398
+
+[node name="brick7" parent="." instance=ExtResource("5_ic3rw")]
+position = Vector2(141, -186)
+rotation = -0.785398
+
+[node name="block2" parent="." instance=ExtResource("4_kq2fv")]
+position = Vector2(87, -258)
+rotation = 0.785398
+
+[node name="brick8" parent="." instance=ExtResource("2_i7fw6")]
+position = Vector2(-82, -265)
+rotation = -0.785398
+
+[node name="spike8" parent="." instance=ExtResource("6_4k2qx")]
+position = Vector2(175, -231)
+rotation = 1.5708
+scale = Vector2(1, -1)
+
+[node name="spike9" parent="." instance=ExtResource("6_4k2qx")]
+position = Vector2(175, -199)
+rotation = 1.5708
+scale = Vector2(1, -1)
+
+[node name="spike10" parent="." instance=ExtResource("6_4k2qx")]
+position = Vector2(-176, -234)
+rotation = 1.5708
+scale = Vector2(-1, 1)
+
+[node name="spike11" parent="." instance=ExtResource("6_4k2qx")]
+position = Vector2(-176, -202)
+rotation = 1.5708
+scale = Vector2(-1, 1)
+
+[node name="spike12" parent="." instance=ExtResource("6_4k2qx")]
+position = Vector2(175, -54)
+rotation = 1.5708
+scale = Vector2(1, -1)
+
+[node name="spike13" parent="." instance=ExtResource("6_4k2qx")]
+position = Vector2(175, -22)
+rotation = 1.5708
+scale = Vector2(1, -1)
+
+[node name="spike14" parent="." instance=ExtResource("6_4k2qx")]
+position = Vector2(-176, -57)
+rotation = 1.5708
+scale = Vector2(-1, 1)
+
+[node name="spike15" parent="." instance=ExtResource("6_4k2qx")]
+position = Vector2(-176, -25)
+rotation = 1.5708
+scale = Vector2(-1, 1)

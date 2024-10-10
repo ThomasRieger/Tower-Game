@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3ohqbqaep7ns"]
+
+[ext_resource type="Texture2D" uid="uid://cmlfoupoygo2x" path="res://Random_Gen/rand_tile.png" id="1_41bxi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hot5v"]
+size = Vector2(14, 8)
+
+[node name="brick1" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_41bxi")
+vframes = 4
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_hot5v")

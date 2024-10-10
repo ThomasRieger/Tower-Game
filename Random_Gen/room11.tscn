@@ -1,0 +1,159 @@
+[gd_scene load_steps=11 format=3 uid="uid://da2qumqp06txn"]
+
+[ext_resource type="PackedScene" uid="uid://b3ohqbqaep7ns" path="res://Random_Gen/brick1.tscn" id="4_th225"]
+[ext_resource type="PackedScene" uid="uid://dydlmpyha6vq3" path="res://Random_Gen/brick4.tscn" id="5_ldtbb"]
+[ext_resource type="PackedScene" uid="uid://dnov2ubrfedk5" path="res://Powerup/DoubleJump/DoubleJump.tscn" id="6_n1tlx"]
+[ext_resource type="PackedScene" uid="uid://c3nt7pqs1r6de" path="res://Random_Gen/spike2.tscn" id="7_pnoe4"]
+[ext_resource type="PackedScene" uid="uid://ddfjm837ke2mt" path="res://Random_Gen/brick2.tscn" id="8_2fd0h"]
+[ext_resource type="PackedScene" uid="uid://dgr4tmjidvwet" path="res://Random_Gen/brick3.tscn" id="9_p1wkt"]
+[ext_resource type="PackedScene" uid="uid://digws1ony81cd" path="res://Random_Gen/spike3.tscn" id="10_nmrli"]
+[ext_resource type="PackedScene" uid="uid://cydy72e7ui8k8" path="res://Powerup/SpeedBoost/SpeedBoost.tscn" id="11_rupyb"]
+[ext_resource type="Texture2D" uid="uid://cmlfoupoygo2x" path="res://Random_Gen/rand_tile.png" id="12_rwk23"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02ct7"]
+size = Vector2(288, 8)
+
+[node name="room11" type="Node2D"]
+
+[node name="brick1" parent="." instance=ExtResource("4_th225")]
+position = Vector2(50, 0)
+
+[node name="brick2" parent="." instance=ExtResource("4_th225")]
+position = Vector2(-50, 0)
+
+[node name="brick4" parent="." instance=ExtResource("5_ldtbb")]
+position = Vector2(-125, -56)
+
+[node name="DoubleJump" parent="." instance=ExtResource("6_n1tlx")]
+position = Vector2(-121, -93)
+
+[node name="spike2" parent="." instance=ExtResource("7_pnoe4")]
+position = Vector2(-51, -115)
+
+[node name="spike3" parent="." instance=ExtResource("7_pnoe4")]
+position = Vector2(-137, -143)
+scale = Vector2(1, -1)
+
+[node name="brick3" parent="." instance=ExtResource("8_2fd0h")]
+position = Vector2(6, -153)
+
+[node name="spike4" parent="." instance=ExtResource("7_pnoe4")]
+position = Vector2(78, -179)
+
+[node name="spike5" parent="." instance=ExtResource("7_pnoe4")]
+position = Vector2(-30, -213)
+scale = Vector2(1, -1)
+
+[node name="spike6" parent="." instance=ExtResource("7_pnoe4")]
+position = Vector2(32, -232)
+
+[node name="spike7" parent="." instance=ExtResource("7_pnoe4")]
+position = Vector2(-91, -215)
+
+[node name="brick5" parent="." instance=ExtResource("9_p1wkt")]
+position = Vector2(7, -262)
+
+[node name="spike8" parent="." instance=ExtResource("10_nmrli")]
+position = Vector2(175, -231)
+rotation = 1.5708
+scale = Vector2(1, -1)
+
+[node name="spike9" parent="." instance=ExtResource("10_nmrli")]
+position = Vector2(175, -199)
+rotation = 1.5708
+scale = Vector2(1, -1)
+
+[node name="spike10" parent="." instance=ExtResource("10_nmrli")]
+position = Vector2(-176, -234)
+rotation = 1.5708
+scale = Vector2(-1, 1)
+
+[node name="spike11" parent="." instance=ExtResource("10_nmrli")]
+position = Vector2(-176, -202)
+rotation = 1.5708
+scale = Vector2(-1, 1)
+
+[node name="SpeedBoost" parent="." instance=ExtResource("11_rupyb")]
+position = Vector2(119, -85)
+
+[node name="brick6" parent="." instance=ExtResource("4_th225")]
+position = Vector2(123, -62)
+
+[node name="spike12" parent="." instance=ExtResource("7_pnoe4")]
+position = Vector2(130, -286)
+scale = Vector2(1, -1)
+
+[node name="platform1" type="Node2D" parent="."]
+position = Vector2(0, -345)
+scale = Vector2(-1, 1)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="platform1"]
+position = Vector2(-176, 0)
+texture = ExtResource("12_rwk23")
+vframes = 4
+frame = 3
+
+[node name="Sprite2D2" type="Sprite2D" parent="platform1"]
+position = Vector2(-144, 0)
+texture = ExtResource("12_rwk23")
+vframes = 4
+frame = 3
+
+[node name="Sprite2D3" type="Sprite2D" parent="platform1"]
+position = Vector2(-144, 0)
+texture = ExtResource("12_rwk23")
+vframes = 4
+frame = 3
+
+[node name="Sprite2D4" type="Sprite2D" parent="platform1"]
+position = Vector2(-112, 0)
+texture = ExtResource("12_rwk23")
+vframes = 4
+frame = 3
+
+[node name="Sprite2D7" type="Sprite2D" parent="platform1"]
+position = Vector2(80, 0)
+texture = ExtResource("12_rwk23")
+flip_h = true
+vframes = 4
+frame = 2
+
+[node name="Sprite2D5" type="Sprite2D" parent="platform1"]
+position = Vector2(-80, 0)
+texture = ExtResource("12_rwk23")
+vframes = 4
+frame = 3
+
+[node name="Sprite2D6" type="Sprite2D" parent="platform1"]
+position = Vector2(-48, 0)
+texture = ExtResource("12_rwk23")
+vframes = 4
+frame = 3
+
+[node name="Sprite2D8" type="Sprite2D" parent="platform1"]
+position = Vector2(-16, 0)
+texture = ExtResource("12_rwk23")
+vframes = 4
+frame = 3
+
+[node name="Sprite2D9" type="Sprite2D" parent="platform1"]
+position = Vector2(16, 0)
+texture = ExtResource("12_rwk23")
+vframes = 4
+frame = 3
+
+[node name="Sprite2D10" type="Sprite2D" parent="platform1"]
+position = Vector2(48, 0)
+texture = ExtResource("12_rwk23")
+vframes = 4
+frame = 3
+
+[node name="StaticBody2D" type="StaticBody2D" parent="platform1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform1/StaticBody2D"]
+position = Vector2(-48, 0)
+shape = SubResource("RectangleShape2D_02ct7")
+
+[node name="brick7" parent="." instance=ExtResource("4_th225")]
+position = Vector2(-161, -262)

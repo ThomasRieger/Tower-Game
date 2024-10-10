@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck1l3xp5ydta"]
+
+[ext_resource type="PackedScene" uid="uid://xmuh15dq2xbe" path="res://Powerup/WallJump/WallJump.tscn" id="2_3ychk"]
+[ext_resource type="PackedScene" uid="uid://bd246b7dlkwpv" path="res://Random_Gen/block1.tscn" id="4_onlf7"]
+[ext_resource type="PackedScene" uid="uid://dnov2ubrfedk5" path="res://Powerup/DoubleJump/DoubleJump.tscn" id="4_ynkx8"]
+[ext_resource type="PackedScene" uid="uid://cydy72e7ui8k8" path="res://Powerup/SpeedBoost/SpeedBoost.tscn" id="5_o8yke"]
+
+[node name="room13" type="Node2D"]
+
+[node name="block1" parent="." instance=ExtResource("4_onlf7")]
+position = Vector2(-69, 0)
+scale = Vector2(0.5, 0.5)
+
+[node name="block2" parent="." instance=ExtResource("4_onlf7")]
+position = Vector2(95, -87)
+scale = Vector2(6, 6)
+
+[node name="block3" parent="." instance=ExtResource("4_onlf7")]
+position = Vector2(-168, -47)
+scale = Vector2(1.5, 1.5)
+
+[node name="block4" parent="." instance=ExtResource("4_onlf7")]
+position = Vector2(-100, -177)
+scale = Vector2(3.8, 3.8)
+
+[node name="block5" parent="." instance=ExtResource("4_onlf7")]
+position = Vector2(22, -253)
+scale = Vector2(1.5, 1.5)
+
+[node name="block6" parent="." instance=ExtResource("4_onlf7")]
+position = Vector2(-157, -309)
+scale = Vector2(2.2, 2.2)
+
+[node name="block7" parent="." instance=ExtResource("4_onlf7")]
+position = Vector2(-104, -279)
+scale = Vector2(0.3, 0.3)
+
+[node name="block8" parent="." instance=ExtResource("4_onlf7")]
+position = Vector2(-36, -375)
+scale = Vector2(3.5, 3.5)
+
+[node name="block9" parent="." instance=ExtResource("4_onlf7")]
+position = Vector2(138, -278)
+scale = Vector2(3.3, 3.3)
+
+[node name="block10" parent="." instance=ExtResource("4_onlf7")]
+position = Vector2(87, -399)
+scale = Vector2(2, 2)
+
+[node name="block11" parent="." instance=ExtResource("4_onlf7")]
+position = Vector2(-124, -414)
+
+[node name="WallJump" parent="." instance=ExtResource("2_3ychk")]
+position = Vector2(-69, -41)
+
+[node name="SpeedBoost" parent="." instance=ExtResource("5_o8yke")]
+position = Vector2(172, -203)
+
+[node name="WallJump2" parent="." instance=ExtResource("2_3ychk")]
+position = Vector2(-62, -263)
+
+[node name="DoubleJump" parent="." instance=ExtResource("4_ynkx8")]
+position = Vector2(161, -358)
+
+[node name="SpeedBoost2" parent="." instance=ExtResource("5_o8yke")]
+position = Vector2(-172, -364)

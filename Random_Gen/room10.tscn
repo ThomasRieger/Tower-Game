@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://fw50lf48sy2o"]
+
+[ext_resource type="PackedScene" uid="uid://ddfjm837ke2mt" path="res://Random_Gen/brick2.tscn" id="4_awlmt"]
+[ext_resource type="PackedScene" uid="uid://8jyrjm0dihk" path="res://Random_Gen/brick5ver.tscn" id="5_bm6fq"]
+[ext_resource type="PackedScene" uid="uid://dydlmpyha6vq3" path="res://Random_Gen/brick4.tscn" id="6_exifw"]
+[ext_resource type="PackedScene" uid="uid://digws1ony81cd" path="res://Random_Gen/spike3.tscn" id="7_7unh8"]
+[ext_resource type="PackedScene" uid="uid://xmuh15dq2xbe" path="res://Powerup/WallJump/WallJump.tscn" id="8_1s7dr"]
+[ext_resource type="PackedScene" uid="uid://c3nt7pqs1r6de" path="res://Random_Gen/spike2.tscn" id="9_8s4at"]
+
+[node name="room10" type="Node2D"]
+
+[node name="brick2" parent="." instance=ExtResource("4_awlmt")]
+
+[node name="brick5ver" parent="." instance=ExtResource("5_bm6fq")]
+position = Vector2(-125, 0)
+
+[node name="brick5ver2" parent="." instance=ExtResource("5_bm6fq")]
+position = Vector2(125, 0)
+
+[node name="brick4" parent="." instance=ExtResource("6_exifw")]
+position = Vector2(0, -75)
+
+[node name="brick5ver3" parent="." instance=ExtResource("5_bm6fq")]
+position = Vector2(80, -132)
+
+[node name="brick5ver4" parent="." instance=ExtResource("5_bm6fq")]
+position = Vector2(-80, -132)
+
+[node name="brick5" parent="." instance=ExtResource("6_exifw")]
+position = Vector2(-115, -200)
+
+[node name="brick6" parent="." instance=ExtResource("6_exifw")]
+position = Vector2(115, -200)
+
+[node name="spike3" parent="." instance=ExtResource("7_7unh8")]
+position = Vector2(-176, -190)
+rotation = 1.5708
+
+[node name="spike4" parent="." instance=ExtResource("7_7unh8")]
+position = Vector2(176, -190)
+rotation = 1.5708
+scale = Vector2(1, -1)
+
+[node name="brick5ver5" parent="." instance=ExtResource("5_bm6fq")]
+position = Vector2(0, -200)
+
+[node name="WallJump" parent="." instance=ExtResource("8_1s7dr")]
+position = Vector2(0, -20)
+
+[node name="spike2" parent="." instance=ExtResource("9_8s4at")]
+position = Vector2(-75, -220)
+
+[node name="spike5" parent="." instance=ExtResource("9_8s4at")]
+position = Vector2(75, -220)

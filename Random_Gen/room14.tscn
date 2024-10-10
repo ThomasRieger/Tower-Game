@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://3ojnvqpgqxsi"]
+
+[ext_resource type="PackedScene" uid="uid://s6v1qvticveu" path="res://Random_Gen/block2.tscn" id="4_7m5d1"]
+[ext_resource type="PackedScene" uid="uid://c3nt7pqs1r6de" path="res://Random_Gen/spike2.tscn" id="5_ms73i"]
+[ext_resource type="PackedScene" uid="uid://dgr4tmjidvwet" path="res://Random_Gen/brick3.tscn" id="6_pebpk"]
+[ext_resource type="PackedScene" uid="uid://digws1ony81cd" path="res://Random_Gen/spike3.tscn" id="7_4jmpe"]
+
+[node name="room14" type="Node2D"]
+
+[node name="block2" parent="." instance=ExtResource("4_7m5d1")]
+position = Vector2(-120, 0)
+rand_speed_wheel1 = 0.6
+rand_speed_wheel2 = 1.8
+
+[node name="block3" parent="." instance=ExtResource("4_7m5d1")]
+position = Vector2(120, 0)
+rand_speed_wheel1 = -0.6
+rand_speed_wheel2 = -1.8
+
+[node name="block4" parent="." instance=ExtResource("4_7m5d1")]
+position = Vector2(0, -60)
+rand_speed_wheel1 = -1.8
+rand_speed_wheel2 = 1.8
+
+[node name="spike2" parent="." instance=ExtResource("5_ms73i")]
+position = Vector2(-120, -82)
+
+[node name="spike3" parent="." instance=ExtResource("5_ms73i")]
+position = Vector2(-120, -52)
+scale = Vector2(1, -1)
+
+[node name="spike4" parent="." instance=ExtResource("5_ms73i")]
+position = Vector2(120, -82)
+
+[node name="spike5" parent="." instance=ExtResource("5_ms73i")]
+position = Vector2(120, -52)
+scale = Vector2(1, -1)
+
+[node name="block5" parent="." instance=ExtResource("4_7m5d1")]
+position = Vector2(-120, -138)
+rand_speed_wheel1 = 0.6
+rand_speed_wheel2 = 1.8
+
+[node name="block6" parent="." instance=ExtResource("4_7m5d1")]
+position = Vector2(120, -138)
+rand_speed_wheel1 = -0.6
+rand_speed_wheel2 = -1.8
+
+[node name="brick3" parent="." instance=ExtResource("6_pebpk")]
+position = Vector2(0, -180)
+
+[node name="spike12" parent="." instance=ExtResource("7_4jmpe")]
+position = Vector2(176, -83)
+rotation = 1.5708
+scale = Vector2(1, -1)
+
+[node name="spike13" parent="." instance=ExtResource("7_4jmpe")]
+position = Vector2(176, -51)
+rotation = 1.5708
+scale = Vector2(1, -1)
+
+[node name="spike14" parent="." instance=ExtResource("7_4jmpe")]
+position = Vector2(-176, -86)
+rotation = 1.5708
+scale = Vector2(-1, 1)
+
+[node name="spike15" parent="." instance=ExtResource("7_4jmpe")]
+position = Vector2(-176, -54)
+rotation = 1.5708
+scale = Vector2(-1, 1)

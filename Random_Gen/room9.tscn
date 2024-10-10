@@ -1,0 +1,115 @@
+[gd_scene load_steps=6 format=3 uid="uid://bser7iqoyrg75"]
+
+[ext_resource type="PackedScene" uid="uid://ddfjm837ke2mt" path="res://Random_Gen/brick2.tscn" id="4_on4l4"]
+[ext_resource type="PackedScene" uid="uid://xmuh15dq2xbe" path="res://Powerup/WallJump/WallJump.tscn" id="5_21s80"]
+[ext_resource type="PackedScene" uid="uid://8jyrjm0dihk" path="res://Random_Gen/brick5ver.tscn" id="6_xolsj"]
+[ext_resource type="PackedScene" uid="uid://c3nt7pqs1r6de" path="res://Random_Gen/spike2.tscn" id="7_e77xd"]
+[ext_resource type="PackedScene" uid="uid://digws1ony81cd" path="res://Random_Gen/spike3.tscn" id="8_6vc78"]
+
+[node name="room9" type="Node2D"]
+
+[node name="brick2" parent="." instance=ExtResource("4_on4l4")]
+position = Vector2(-85, 0)
+
+[node name="brick3" parent="." instance=ExtResource("4_on4l4")]
+position = Vector2(85, 0)
+
+[node name="WallJump" parent="." instance=ExtResource("5_21s80")]
+position = Vector2(-85, -25)
+
+[node name="WallJump2" parent="." instance=ExtResource("5_21s80")]
+position = Vector2(85, -25)
+
+[node name="brick5ver" parent="." instance=ExtResource("6_xolsj")]
+position = Vector2(0, -70)
+
+[node name="brick5ver2" parent="." instance=ExtResource("6_xolsj")]
+position = Vector2(170, -70)
+
+[node name="brick5ver3" parent="." instance=ExtResource("6_xolsj")]
+position = Vector2(-170, -70)
+
+[node name="brick5ver4" parent="." instance=ExtResource("6_xolsj")]
+position = Vector2(85, -160)
+
+[node name="brick5ver5" parent="." instance=ExtResource("6_xolsj")]
+position = Vector2(-85, -160)
+
+[node name="brick5ver6" parent="." instance=ExtResource("6_xolsj")]
+position = Vector2(0, -250)
+
+[node name="brick5ver7" parent="." instance=ExtResource("6_xolsj")]
+position = Vector2(170, -250)
+
+[node name="brick5ver8" parent="." instance=ExtResource("6_xolsj")]
+position = Vector2(-170, -250)
+
+[node name="brick5ver9" parent="." instance=ExtResource("6_xolsj")]
+position = Vector2(85, -340)
+
+[node name="brick5ver10" parent="." instance=ExtResource("6_xolsj")]
+position = Vector2(-85, -340)
+
+[node name="spike2" parent="." instance=ExtResource("7_e77xd")]
+position = Vector2(-170, -218)
+scale = Vector2(1, -1)
+
+[node name="spike5" parent="." instance=ExtResource("7_e77xd")]
+position = Vector2(-85, -132)
+scale = Vector2(1, -1)
+
+[node name="spike6" parent="." instance=ExtResource("7_e77xd")]
+position = Vector2(85, -132)
+scale = Vector2(1, -1)
+
+[node name="spike3" parent="." instance=ExtResource("7_e77xd")]
+position = Vector2(170, -218)
+scale = Vector2(1, -1)
+
+[node name="spike4" parent="." instance=ExtResource("7_e77xd")]
+position = Vector2(0, -218)
+scale = Vector2(1, -1)
+
+[node name="spike7" parent="." instance=ExtResource("7_e77xd")]
+position = Vector2(-85, -312)
+scale = Vector2(1, -1)
+
+[node name="spike8" parent="." instance=ExtResource("7_e77xd")]
+position = Vector2(85, -312)
+scale = Vector2(1, -1)
+
+[node name="spike9" parent="." instance=ExtResource("8_6vc78")]
+position = Vector2(-176, -178)
+rotation = 1.5708
+
+[node name="spike10" parent="." instance=ExtResource("8_6vc78")]
+position = Vector2(176, -178)
+rotation = 1.5708
+scale = Vector2(1, -1)
+
+[node name="spike11" parent="." instance=ExtResource("8_6vc78")]
+position = Vector2(-176, -326)
+rotation = 1.5708
+
+[node name="spike12" parent="." instance=ExtResource("8_6vc78")]
+position = Vector2(176, -326)
+rotation = 1.5708
+scale = Vector2(1, -1)
+
+[node name="spike13" parent="." instance=ExtResource("8_6vc78")]
+position = Vector2(-176, -146)
+rotation = 1.5708
+
+[node name="spike14" parent="." instance=ExtResource("8_6vc78")]
+position = Vector2(176, -146)
+rotation = 1.5708
+scale = Vector2(1, -1)
+
+[node name="spike15" parent="." instance=ExtResource("8_6vc78")]
+position = Vector2(-176, -358)
+rotation = 1.5708
+
+[node name="spike16" parent="." instance=ExtResource("8_6vc78")]
+position = Vector2(176, -358)
+rotation = 1.5708
+scale = Vector2(1, -1)
