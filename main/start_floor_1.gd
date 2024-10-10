@@ -8,8 +8,13 @@ extends Node2D
 @onready var speed_icon = $"power_ups/speed_icon"
 @onready var wall_label = $"power_ups/wall_icon/Label"
 @onready var wall_icon = $"power_ups/wall_icon"
+@onready var pausemenu = $Camera2D/Pause_menu
+
+var paused = false
+
 func _ready() -> void:
 	BgmPlayer.play_music_level()	
+	BgmPlayer.play()
 
 func _physics_process(delta: float) -> void:
 	if global.dash:
@@ -48,3 +53,17 @@ func _physics_process(delta: float) -> void:
 			return
 		wall_label.text = "%0.1f" % global.power_time[3]
 		wall_icon.visible = true
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("Pause"):
+		pause_menu()
+		
+func pause_menu():
+	if paused:
+		pausemenu.hide()
+		Engine.time_scale = 1
+	else:
+		pausemenu.show()
+		Engine.time_scale = 0
+	
+	paused = !paused

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://gdglwyk35qax"]
+[gd_scene load_steps=23 format=4 uid="uid://gdglwyk35qax"]
 
 [ext_resource type="Script" path="res://main/start_floor_1.gd" id="1_08a6g"]
 [ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="1_aq8g7"]
@@ -10,11 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://luofy5xxs7tm" path="res://assets/power_icon1.png" id="5_xyxby"]
 [ext_resource type="PackedScene" uid="uid://dnov2ubrfedk5" path="res://Powerup/DoubleJump/DoubleJump.tscn" id="7_ins6j"]
 [ext_resource type="PackedScene" uid="uid://cydy72e7ui8k8" path="res://Powerup/SpeedBoost/SpeedBoost.tscn" id="8_wesn7"]
+[ext_resource type="PackedScene" uid="uid://d330nnjym1q4b" path="res://Pause_menu.tscn" id="9_g7508"]
 [ext_resource type="PackedScene" uid="uid://xmuh15dq2xbe" path="res://Powerup/WallJump/WallJump.tscn" id="9_gvdbw"]
 [ext_resource type="AudioStream" uid="uid://chh4ecahs325e" path="res://assets/sound/powerUp.wav" id="10_ffm7k"]
 [ext_resource type="PackedScene" uid="uid://bso2iaanrou5s" path="res://Traps/Spiketrap.tscn" id="12_t08hy"]
 [ext_resource type="PackedScene" uid="uid://hytqsr07vg4c" path="res://Enemy/Enemy.tscn" id="13_4u65a"]
-[ext_resource type="PackedScene" uid="uid://cicobqfijtyqs" path="res://assets/sound/sfx_player.tscn" id="14_ncwhb"]
+[ext_resource type="PackedScene" path="res://assets/sound/sfx_player.tscn" id="14_ncwhb"]
 
 [sub_resource type="Gradient" id="Gradient_nc1vc"]
 offsets = PackedFloat32Array(0)
@@ -125,11 +126,16 @@ position = Vector2(0, -6)
 zoom = Vector2(0.9, 0.9)
 script = ExtResource("1_aq8g7")
 
+[node name="Pause_menu" parent="Camera2D" instance=ExtResource("9_g7508")]
+visible = false
+offset_top = 6.0
+offset_bottom = 6.0
+
 [node name="power_ups" type="Node2D" parent="."]
 
 [node name="dash_icon" type="Sprite2D" parent="power_ups"]
 visible = false
-position = Vector2(-246, -115)
+position = Vector2(-245, -110)
 texture = ExtResource("5_xyxby")
 vframes = 4
 frame = 3
@@ -158,7 +164,7 @@ vertical_alignment = 1
 
 [node name="djump_icon" type="Sprite2D" parent="power_ups"]
 visible = false
-position = Vector2(245, -115)
+position = Vector2(-245, -55)
 texture = ExtResource("5_xyxby")
 vframes = 4
 frame = 2
@@ -176,7 +182,7 @@ vertical_alignment = 1
 
 [node name="speed_icon" type="Sprite2D" parent="power_ups"]
 visible = false
-position = Vector2(-246, 110)
+position = Vector2(-246, 55)
 texture = ExtResource("5_xyxby")
 vframes = 4
 
@@ -193,7 +199,7 @@ vertical_alignment = 1
 
 [node name="wall_icon" type="Sprite2D" parent="power_ups"]
 visible = false
-position = Vector2(244, 110)
+position = Vector2(-245, 0)
 texture = ExtResource("5_xyxby")
 vframes = 4
 frame = 1
