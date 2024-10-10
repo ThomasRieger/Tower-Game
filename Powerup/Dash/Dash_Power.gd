@@ -33,20 +33,9 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player" && visible:
-		#play_sfx(sfx_powerUp)
+		AudioController.sfx_powerUp()
 		global.dash = true
 		global.power_time[0] = global.power_dur
 		await get_tree().create_timer(0.01).timeout
 		visible = false
 		colli.disabled = true
-
-#--------------------------Sounds--------------------------#
-@export var sfx_powerUp : AudioStream
-#func load_sfx(sfx_to_load):
-	#if %sfx_player.stream != sfx_to_load:
-		#%sfx_player.stop()
-		#%sfx_player.stream = sfx_to_load
-		
-#func play_sfx(sfx_to_play):
-	#load_sfx(sfx_to_play)
-	#%sfx_player.play()

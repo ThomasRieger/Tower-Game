@@ -33,6 +33,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player" && visible:
+		AudioController.sfx_powerUp()
 		global.wall_jump = true
 		global.power_time[3] = global.power_dur
 		await get_tree().create_timer(0.01).timeout

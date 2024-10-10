@@ -13,8 +13,9 @@ extends Node2D
 var paused = false
 
 func _ready() -> void:
-	BgmPlayer.play_music_level()	
-	BgmPlayer.play()
+	#BgmPlayer.play_music_level()	
+	#BgmPlayer.play()
+	AudioController.play_bgm()
 
 func _physics_process(delta: float) -> void:
 	if global.dash:
@@ -61,9 +62,11 @@ func _process(delta: float) -> void:
 func pause_menu():
 	if paused:
 		pausemenu.hide()
+		AudioController.resume_bgm()
 		Engine.time_scale = 1
 	else:
 		pausemenu.show()
+		AudioController.pause_bgm()
 		Engine.time_scale = 0
 	
 	paused = !paused

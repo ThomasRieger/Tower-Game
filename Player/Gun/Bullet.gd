@@ -21,6 +21,7 @@ func _on_body_entered(body: Node2D) -> void:
 		if !body.name == "Player":
 			if body.name.begins_with("Enemy"):
 				body.take_damage(1)
+			AudioController.sfx_bulletHit()
 			$Splash.emitting = true
 			collision = true
 			$Sprite2D.visible = false

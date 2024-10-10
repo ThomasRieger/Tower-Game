@@ -1,14 +1,14 @@
 [gd_scene load_steps=27 format=3 uid="uid://73xvh87ssiju"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_is4dm"]
-[ext_resource type="AudioStream" uid="uid://cn5dmu7wntvox" path="res://assets/sound/player_sfx/walk2.wav" id="2_dxte5"]
+[ext_resource type="AudioStream" uid="uid://cn5dmu7wntvox" path="res://assets/sound/walk2.wav" id="2_dxte5"]
 [ext_resource type="Script" path="res://Player/Hand.gd" id="2_wx6cq"]
-[ext_resource type="AudioStream" uid="uid://byoro0oege015" path="res://assets/sound/player_sfx/jump2.wav" id="3_0bepy"]
+[ext_resource type="AudioStream" uid="uid://byoro0oege015" path="res://assets/sound/jump2.wav" id="3_0bepy"]
 [ext_resource type="Texture2D" uid="uid://cwo16wc0c0t7g" path="res://assets/slime_anim1.png" id="3_au3ie"]
-[ext_resource type="AudioStream" uid="uid://bschfdufhfhgt" path="res://assets/sound/player_sfx/wallJump.wav" id="4_pa1d6"]
+[ext_resource type="AudioStream" uid="uid://bschfdufhfhgt" path="res://assets/sound/wallJump.wav" id="4_pa1d6"]
 [ext_resource type="Texture2D" uid="uid://cyyagriyt1116" path="res://assets/slime_jumpupdown.png" id="4_vwkqf"]
 [ext_resource type="Texture2D" uid="uid://c52cv34kdt2jw" path="res://assets/Effect.png" id="4_wmvch"]
-[ext_resource type="AudioStream" uid="uid://bs8x103bcayo0" path="res://assets/sound/player_sfx/dash1.wav" id="5_oeb4l"]
+[ext_resource type="AudioStream" uid="uid://bs8x103bcayo0" path="res://assets/sound/dash1.wav" id="5_oeb4l"]
 [ext_resource type="PackedScene" uid="uid://cicobqfijtyqs" path="res://assets/sound/sfx_player.tscn" id="10_vy4da"]
 
 [sub_resource type="Curve" id="Curve_1egim"]

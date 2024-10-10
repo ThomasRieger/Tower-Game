@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://luofy5xxs7tm" path="res://assets/power_icon1.png" id="5_xyxby"]
 [ext_resource type="PackedScene" uid="uid://d330nnjym1q4b" path="res://Pause_menu.tscn" id="9_g7508"]
 [ext_resource type="Script" path="res://Random_Gen/rand_gen.gd" id="14_6slis"]
-[ext_resource type="PackedScene" path="res://assets/sound/sfx_player.tscn" id="14_ncwhb"]
+[ext_resource type="PackedScene" uid="uid://cicobqfijtyqs" path="res://assets/sound/sfx_player.tscn" id="14_ncwhb"]
 
 [sub_resource type="Gradient" id="Gradient_nc1vc"]
 offsets = PackedFloat32Array(0)

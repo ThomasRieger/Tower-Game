@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2nb3w67lllsj"]
+
+[ext_resource type="AudioStream" uid="uid://bt2mpu4dykhad" path="res://assets/sound/bgm_doodle1.mp3" id="1_46cms"]
+[ext_resource type="Script" path="res://assets/sound/audio_controller.gd" id="1_xl6vp"]
+[ext_resource type="AudioStream" uid="uid://chh4ecahs325e" path="res://assets/sound/powerUp.wav" id="2_0v6cx"]
+[ext_resource type="AudioStream" uid="uid://crr4yxh3os10n" path="res://assets/sound/gun/shoot.wav" id="4_nnqvx"]
+[ext_resource type="AudioStream" uid="uid://cgtqvwxy5ryne" path="res://assets/sound/gun/bulletHit.wav" id="5_7g8nf"]
+
+[node name="AudioController" type="Node2D"]
+script = ExtResource("1_xl6vp")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_46cms")
+volume_db = -12.05
+
+[node name="PowerUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_0v6cx")
+
+[node name="GunShoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_nnqvx")
+volume_db = -10.645
+
+[node name="BulletHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_7g8nf")
+volume_db = -5.905

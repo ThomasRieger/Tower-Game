@@ -23,6 +23,7 @@ boot_splash/use_filter=false
 global="*res://main/global.gd"
 SceneTransition="*res://scene_transition.tscn"
 BgmPlayer="*res://assets/sound/bgm_player.tscn"
+AudioController="*res://assets/sound/audio_controller.tscn"
 
 [display]
 

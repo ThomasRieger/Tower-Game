@@ -20,6 +20,7 @@ func _process(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("fire") and can_shoot:
 		fire()
+		AudioController.sfx_fire()
 		can_shoot = false
 		
 func fire():

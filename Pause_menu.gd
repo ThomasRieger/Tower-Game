@@ -7,7 +7,7 @@ func _on_resume_pressed() -> void:
 	
 func _on_restart_pressed() -> void:
 	main.pause_menu()
-	BgmPlayer.play()
+	AudioController.play_bgm()
 	SceneTransition.change_scene("res://main/Start_floor_1.tscn")
 	global.dash = false
 	global.is_dash = false
@@ -20,4 +20,4 @@ func _on_restart_pressed() -> void:
 func _on_quit_pressed() -> void:
 	main.pause_menu()
 	SceneTransition.change_scene("res://Main_Menu/Main_Menu.tscn")
-	BgmPlayer.stop()
+	AudioController.stop_bgm()
