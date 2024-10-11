@@ -16,6 +16,8 @@ func _ready() -> void:
 	$Attempts.text = "Attempt %d" % global.death
 	#BgmPlayer.play_music_level()	
 	#BgmPlayer.play()
+	AudioController.stop_intro()
+	AudioController.stop_ambience()
 	AudioController.play_bgm()
 
 func _physics_process(delta: float) -> void:
@@ -60,6 +62,8 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Pause"):
 		pause_menu()
 	if global.boss_health <= 0:
+		AudioController.stop_bgm()
+		AudioController.bgm_ambience()
 		SceneTransition.change_scene("res://Ending.tscn")
 		$Camera2D/Stopwatch.stop()
 		

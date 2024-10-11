@@ -131,7 +131,7 @@ func random_room():
 
 func _ready() -> void:
 	while(i < 100):
-		match rng.randi_range(0, 3):
+		match rng.randi_range(0, 3):	
 			0:
 				#platform flooring for 1 to 10
 				for j in range(rng.randi_range(1, 10)):

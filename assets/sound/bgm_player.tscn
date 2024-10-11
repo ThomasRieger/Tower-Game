@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://btp88gk018k8g"]
-
-[ext_resource type="Script" path="res://assets/sound/bgm_player.gd" id="1_ceaic"]
-
-[node name="bgm_player" type="AudioStreamPlayer"]
-autoplay = true
-bus = &"BGM"
-script = ExtResource("1_ceaic")

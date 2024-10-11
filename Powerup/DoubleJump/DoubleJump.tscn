@@ -24,4 +24,5 @@ position = Vector2(-197, -132)
 rotation = 0.785398
 shape = SubResource("CapsuleShape2D_51rkj")
 
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

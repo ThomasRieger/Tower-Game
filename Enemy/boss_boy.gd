@@ -14,14 +14,16 @@ func _physics_process(delta: float) -> void:
 	if timer > 1.1 and !up:
 		up = true
 		if global.boss_health <= 10:
-			global.boss_health += 0.2
+			progress_health.value = global.boss_health
+			global.boss_health += 0.3
 		timer = 0
 		var tween1 = create_tween()
 		tween1.tween_property(self, "position:y", base_pos.y - 20, 1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 	elif timer > 1.1 and up:
 		up = false
 		if global.boss_health <= 10:
-			global.boss_health += 0.2
+			progress_health.value = global.boss_health
+			global.boss_health += 0.3
 		timer = 0
 		var tween1 = create_tween()
 		tween1.tween_property(self, "position:y", base_pos.y, 1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)

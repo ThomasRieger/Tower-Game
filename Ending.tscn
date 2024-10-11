@@ -1,8 +1,10 @@
-[gd_scene load_steps=56 format=3 uid="uid://dag1cpcorbjat"]
+[gd_scene load_steps=58 format=3 uid="uid://dag1cpcorbjat"]
 
 [ext_resource type="Script" path="res://Ending.gd" id="1_h8nvn"]
 [ext_resource type="Texture2D" uid="uid://b21uv7u3bo7hh" path="res://assets/Ending.png" id="1_w3nl5"]
+[ext_resource type="AudioStream" uid="uid://dieaq6axhaiks" path="res://assets/sound/Crystal_explosion.wav" id="2_jtars"]
 [ext_resource type="FontFile" uid="uid://82odygvbe8ns" path="res://assets/SlimeBox-GWMD.ttf" id="3_7ly68"]
+[ext_resource type="PackedScene" uid="uid://cicobqfijtyqs" path="res://assets/sound/sfx_player.tscn" id="4_inrhr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sxj1f"]
 atlas = ExtResource("1_w3nl5")
@@ -232,7 +234,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"EndMenu",
-"speed": 24.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -356,6 +358,7 @@ corner_radius_bottom_left = 2
 
 [node name="Ending" type="Node2D"]
 script = ExtResource("1_h8nvn")
+sfx_explode = ExtResource("2_jtars")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(240, 135)
@@ -409,5 +412,9 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_4n4bt")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_3dsxr")
 text = "Restart"
 
+[node name="sfx_player" parent="." instance=ExtResource("4_inrhr")]
+unique_name_in_owner = true
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]

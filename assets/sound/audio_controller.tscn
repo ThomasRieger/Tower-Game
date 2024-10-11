@@ -1,17 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2nb3w67lllsj"]
+[gd_scene load_steps=9 format=3 uid="uid://c2nb3w67lllsj"]
 
-[ext_resource type="AudioStream" uid="uid://bt2mpu4dykhad" path="res://assets/sound/bgm_doodle1.mp3" id="1_46cms"]
 [ext_resource type="Script" path="res://assets/sound/audio_controller.gd" id="1_xl6vp"]
 [ext_resource type="AudioStream" uid="uid://chh4ecahs325e" path="res://assets/sound/powerUp.wav" id="2_0v6cx"]
+[ext_resource type="AudioStream" uid="uid://c832y3wsduhty" path="res://assets/sound/level_bgm.ogg" id="2_kqgam"]
 [ext_resource type="AudioStream" uid="uid://crr4yxh3os10n" path="res://assets/sound/gun/shoot.wav" id="4_nnqvx"]
 [ext_resource type="AudioStream" uid="uid://cgtqvwxy5ryne" path="res://assets/sound/gun/bulletHit.wav" id="5_7g8nf"]
+[ext_resource type="AudioStream" uid="uid://dedf0fxl2wu5e" path="res://assets/sound/Music/Forest_Ambience.mp3" id="6_gs8fi"]
+[ext_resource type="AudioStream" uid="uid://jxwlgmq6tsl8" path="res://assets/sound/Music/bgm_intro.ogg" id="7_dxk8y"]
+[ext_resource type="AudioStream" uid="uid://bhxsau7chennu" path="res://assets/sound/Music/titleDrop.wav" id="8_4tcur"]
 
 [node name="AudioController" type="Node2D"]
 script = ExtResource("1_xl6vp")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_46cms")
-volume_db = -12.05
+stream = ExtResource("2_kqgam")
+volume_db = 1.067
 
 [node name="PowerUp" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_0v6cx")
@@ -23,3 +26,15 @@ volume_db = -10.645
 [node name="BulletHit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_7g8nf")
 volume_db = -5.905
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_gs8fi")
+volume_db = -10.307
+
+[node name="Intro_bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_dxk8y")
+volume_db = -5.339
+
+[node name="titleDrop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_4tcur")
+volume_db = -8.432

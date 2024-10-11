@@ -6,6 +6,11 @@ var done = false
 @onready var title_top = $title_top
 @onready var title_bottom = $title_bottom
 @onready var base_pos = title_top.position.y
+
+func _ready() -> void:
+	AudioController.bgm_ambience()
+	AudioController.bgm_intro()
+	
 func _physics_process(delta: float) -> void:
 	timer += delta
 	if timer > 0.1 and title_top.frame != 13:

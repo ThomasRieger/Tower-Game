@@ -28,4 +28,18 @@ func sfx_fire():
 	
 func sfx_bulletHit():
 	$BulletHit.play()
+
+func bgm_ambience():
+	$Ambience.play()
 	
+func stop_ambience():
+	$Ambience.stop()
+	
+func bgm_intro():
+	$Intro_bgm.play()
+	
+func stop_intro():
+	$Intro_bgm.stop()
+
+func sfx_titleDrop():
+	$titleDrop.play()
