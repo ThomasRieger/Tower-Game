@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://1vpmmahv0617" path="res://assets/Tower-Tiles.png" id="2_g0eo3"]
 [ext_resource type="Texture2D" uid="uid://21d23epjsgst" path="res://assets/Door.png" id="3_3k8p0"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kba23"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vvb0l"]
 texture = ExtResource("1_c66ns")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -26,7 +26,7 @@ texture_region_size = Vector2i(32, 32)
 1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(11.875, -16, 11.75, -12.1875, 16, -12.0625, 16, -16)
 2:2/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e5bl7"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_15efa"]
 texture = ExtResource("2_g0eo3")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -60,7 +60,7 @@ texture_region_size = Vector2i(32, 32)
 0:3/0 = 0
 0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 1.75, 6, 1.75, 6.25, -8.25, -16, -8)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k08fr"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w2mkp"]
 texture = ExtResource("3_3k8p0")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -76,9 +76,9 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 7
-sources/0 = SubResource("TileSetAtlasSource_kba23")
-sources/1 = SubResource("TileSetAtlasSource_e5bl7")
-sources/2 = SubResource("TileSetAtlasSource_k08fr")
+sources/0 = SubResource("TileSetAtlasSource_vvb0l")
+sources/1 = SubResource("TileSetAtlasSource_15efa")
+sources/2 = SubResource("TileSetAtlasSource_w2mkp")
 
 [node name="room_temp" type="Node2D"]
 

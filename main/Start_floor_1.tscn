@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://gdglwyk35qax"]
+[gd_scene load_steps=20 format=4 uid="uid://gdglwyk35qax"]
 
 [ext_resource type="Script" path="res://main/start_floor_1.gd" id="1_08a6g"]
 [ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="1_aq8g7"]
@@ -10,15 +10,16 @@
 [ext_resource type="Texture2D" uid="uid://luofy5xxs7tm" path="res://assets/power_icon1.png" id="5_xyxby"]
 [ext_resource type="PackedScene" uid="uid://d330nnjym1q4b" path="res://Pause_menu.tscn" id="9_g7508"]
 [ext_resource type="Script" path="res://main/Stopwatch.gd" id="11_kb3g1"]
+[ext_resource type="PackedScene" uid="uid://dag1cpcorbjat" path="res://Ending.tscn" id="13_37cqu"]
 [ext_resource type="Script" path="res://Random_Gen/rand_gen.gd" id="14_6slis"]
-[ext_resource type="PackedScene" path="res://assets/sound/sfx_player.tscn" id="14_ncwhb"]
+[ext_resource type="PackedScene" uid="uid://cicobqfijtyqs" path="res://assets/sound/sfx_player.tscn" id="14_ncwhb"]
 
-[sub_resource type="Gradient" id="Gradient_nc1vc"]
+[sub_resource type="Gradient" id="Gradient_6e28p"]
 offsets = PackedFloat32Array(0)
 colors = PackedColorArray(0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_f60od"]
-gradient = SubResource("Gradient_nc1vc")
+gradient = SubResource("Gradient_6e28p")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v3cr8"]
 texture = ExtResource("2_2ecq8")
@@ -100,6 +101,7 @@ sources/2 = SubResource("TileSetAtlasSource_uktg4")
 script = ExtResource("1_08a6g")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+z_index = -10
 offset_left = -2025.0
 offset_top = -1454.0
 offset_right = 2356.0
@@ -107,7 +109,7 @@ offset_bottom = 1156.0
 texture = SubResource("GradientTexture1D_f60od")
 
 [node name="Player" parent="." instance=ExtResource("1_xthax")]
-position = Vector2(63, -56)
+position = Vector2(227, -98)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = 10
@@ -143,6 +145,7 @@ offset_top = 6.0
 offset_bottom = 6.0
 
 [node name="power_ups" type="Node2D" parent="."]
+z_index = 10
 position = Vector2(240, -150)
 
 [node name="dash_icon" type="Sprite2D" parent="power_ups"]
@@ -239,6 +242,7 @@ tile_map_data = PackedByteArray("AAD5////AQABAAEAAAD5//n/AQABAAEAAAD5//r/AQABAAE
 tile_set = SubResource("TileSet_tsf08")
 
 [node name="Attempts" type="Label" parent="."]
+z_index = 10
 offset_left = 385.0
 offset_top = -19.0
 offset_right = 464.0
@@ -247,3 +251,5 @@ theme_override_colors/font_color = Color(0.682353, 0.466667, 0.32549, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("4_l561f")
 text = "Attempt 0"
+
+[node name="Ending" parent="." instance=ExtResource("13_37cqu")]

@@ -56,9 +56,12 @@ func _physics_process(delta: float) -> void:
 		wall_label.text = "%0.1f" % global.power_time[3]
 		wall_icon.visible = true
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Pause"):
 		pause_menu()
+	if global.boss_health <= 0:
+		SceneTransition.change_scene("res://Ending.tscn")
+		$Camera2D/Stopwatch.stop()
 		
 func pause_menu():
 	if paused:

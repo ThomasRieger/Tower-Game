@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cs047mu2i0epr"]
+[gd_scene load_steps=7 format=3 uid="uid://cs047mu2i0epr"]
 
 [ext_resource type="PackedScene" uid="uid://dsvt5dm8ya5jn" path="res://Random_Gen/spike1.tscn" id="1_ggpgr"]
 [ext_resource type="Texture2D" uid="uid://cmlfoupoygo2x" path="res://Random_Gen/rand_tile.png" id="2_mrpi6"]
 [ext_resource type="PackedScene" uid="uid://ddfjm837ke2mt" path="res://Random_Gen/brick2.tscn" id="3_2xhbd"]
+[ext_resource type="PackedScene" uid="uid://cag0i3rcc6u08" path="res://Powerup/Dash/Dash_Power.tscn" id="4_j1116"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4crbc"]
 size = Vector2(288, 8)
@@ -168,9 +169,6 @@ position = Vector2(164, -56)
 [node name="brick6" parent="." instance=ExtResource("3_2xhbd")]
 position = Vector2(-120, -112)
 
-[node name="brick7" parent="." instance=ExtResource("3_2xhbd")]
-position = Vector2(0, -112)
-
 [node name="brick8" parent="." instance=ExtResource("3_2xhbd")]
 position = Vector2(120, -112)
 
@@ -203,3 +201,12 @@ position = Vector2(-177, -69)
 
 [node name="brick9" parent="." instance=ExtResource("3_2xhbd")]
 position = Vector2(-164, -156)
+
+[node name="Dash_Power" parent="." instance=ExtResource("4_j1116")]
+position = Vector2(-117, -21)
+
+[node name="Dash_Power2" parent="." instance=ExtResource("4_j1116")]
+position = Vector2(1, -23)
+
+[node name="Dash_Power3" parent="." instance=ExtResource("4_j1116")]
+position = Vector2(121, -23)

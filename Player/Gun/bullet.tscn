@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://hhj6fxgedvpe"]
+[gd_scene load_steps=6 format=3 uid="uid://hhj6fxgedvpe"]
 
 [ext_resource type="Script" path="res://Player/Gun/Bullet.gd" id="1_xe0if"]
 [ext_resource type="Texture2D" uid="uid://bivy0jeeje574" path="res://assets/Bullet.png" id="2_fi6fk"]
@@ -11,7 +11,12 @@ height = 13.3333
 _data = [Vector2(0.0106383, 1), 0.0, 0.0, 0, 0, Vector2(0.25, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mn7po"]
+radius = 3.0
+height = 10.0
+
 [node name="Bullet" type="Area2D"]
+z_index = 10
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_xe0if")
@@ -46,6 +51,12 @@ scale_amount_min = 3.0
 scale_amount_max = 3.0
 scale_amount_curve = SubResource("Curve_njfla")
 color = Color(0.745098, 0.47451, 0.458824, 1)
+
+[node name="bulley" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bulley"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_mn7po")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

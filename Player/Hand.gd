@@ -5,6 +5,8 @@ extends Node2D
 var bullet = preload("res://Player/Gun/bullet.tscn") 
 var can_shoot = true
 var Cooldown = 0.0
+func _ready() -> void:
+	self.z_index = 10
 
 func _process(delta: float) -> void:
 	var cursor_position = get_global_mouse_position()
@@ -14,7 +16,7 @@ func _process(delta: float) -> void:
 	
 	if not can_shoot:
 		Cooldown += delta
-		if Cooldown >= 0.6:
+		if Cooldown >= 0.4:
 			can_shoot = true
 			Cooldown = 0.0
 		

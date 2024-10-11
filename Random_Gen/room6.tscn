@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dldvnlc61cub7"]
+[gd_scene load_steps=7 format=3 uid="uid://dldvnlc61cub7"]
 
+[ext_resource type="PackedScene" uid="uid://cag0i3rcc6u08" path="res://Powerup/Dash/Dash_Power.tscn" id="4_cub7g"]
 [ext_resource type="Texture2D" uid="uid://cmlfoupoygo2x" path="res://Random_Gen/rand_tile.png" id="5_pawah"]
 [ext_resource type="PackedScene" uid="uid://ddfjm837ke2mt" path="res://Random_Gen/brick2.tscn" id="6_upeqp"]
 [ext_resource type="PackedScene" uid="uid://c3nt7pqs1r6de" path="res://Random_Gen/spike2.tscn" id="7_r0y5q"]
@@ -177,3 +178,9 @@ scale = Vector2(1, -1)
 [node name="spike6" parent="." instance=ExtResource("7_r0y5q")]
 position = Vector2(-45, -80)
 scale = Vector2(1, -1)
+
+[node name="Dash_Power" parent="." instance=ExtResource("4_cub7g")]
+position = Vector2(-120, -20)
+
+[node name="Dash_Power2" parent="." instance=ExtResource("4_cub7g")]
+position = Vector2(0, -19)

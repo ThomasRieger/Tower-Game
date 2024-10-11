@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed = 200
+@export var speed = 500
 var collision = false
 
 func _ready() -> void:
@@ -23,7 +23,11 @@ func _on_body_entered(body: Node2D) -> void:
 				body.take_damage(1)
 			AudioController.sfx_bulletHit()
 			$Splash.emitting = true
+			$bulley/CollisionShape2D.position = Vector2(1000,1000)
+			speed = 0
 			collision = true
 			$Sprite2D.visible = false
+			await get_tree().create_timer(0.3).timeout
+			
 	else:
 		collision = false

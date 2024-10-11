@@ -7,6 +7,7 @@
 size = Vector2(28, 12)
 
 [node name="Dash_Power" type="Node2D"]
+z_index = 10
 script = ExtResource("1_1mbon")
 
 [node name="Game_icon" type="Sprite2D" parent="."]

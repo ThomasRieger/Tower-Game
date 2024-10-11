@@ -2,10 +2,10 @@ extends CharacterBody2D
 
 # Constant
 const SPEED = 150.0
-const JUMP_VELOCITY = -250.0
+const JUMP_VELOCITY = -300.0
 const GRAVITY = 500.0
 const FALL_MULTIPLIER = 1.5
-const DASH_SPEED = 400.0
+const DASH_SPEED = 700.0
 const POWTIME = 0.1
 
 # Nodes
@@ -45,8 +45,8 @@ func _physics_process(delta: float) -> void:
 
 # Dash
 	if global.dash:
-		if Input.is_action_pressed("dash") and abs(velocity.x) <= SPEED:
-			if global.is_dash == false and jump_num > 0:
+		if (Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("dash")) and jump_num == 1 and !is_on_floor():
+			if global.is_dash == false and jump_num == 1:
 				play_sfx(sfx_dash)
 				$ParticlesDash.emitting = true
 				global.is_dash = true
@@ -55,7 +55,6 @@ func _physics_process(delta: float) -> void:
 
 # DoubleJump
 	if global.double_jump:
-			
 		if Input.is_action_just_pressed("jump") and !is_on_floor() and jump_num >= 1 and Engine.time_scale != 0:
 			jump()
 			jump_num = 0
@@ -161,7 +160,7 @@ func movement(delta):
 			#var face = facing_direction
 			#velocity.x = face * DASH_SPEED
 		#else:
-		velocity.x = move_toward(velocity.x, 0, (delta * abs(velocity.x) * 1.2) + 7)
+		velocity.x = move_toward(velocity.x, 0, (delta * abs(velocity.x) * 1.4) + 7)
 		$ParticlesMove.emitting = false
 		#velocity.x = move_toward(velocity.x, 0, delta * abs(velocity.x) * 100)
 	if abs(velocity.x) < 2 and velocity.y == 0:

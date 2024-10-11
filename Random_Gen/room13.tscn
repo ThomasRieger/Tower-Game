@@ -1,66 +1,79 @@
-[gd_scene load_steps=5 format=3 uid="uid://ck1l3xp5ydta"]
+[gd_scene load_steps=6 format=3 uid="uid://ck1l3xp5ydta"]
 
 [ext_resource type="PackedScene" uid="uid://xmuh15dq2xbe" path="res://Powerup/WallJump/WallJump.tscn" id="2_3ychk"]
 [ext_resource type="PackedScene" uid="uid://bd246b7dlkwpv" path="res://Random_Gen/block1.tscn" id="4_onlf7"]
 [ext_resource type="PackedScene" uid="uid://dnov2ubrfedk5" path="res://Powerup/DoubleJump/DoubleJump.tscn" id="4_ynkx8"]
 [ext_resource type="PackedScene" uid="uid://cydy72e7ui8k8" path="res://Powerup/SpeedBoost/SpeedBoost.tscn" id="5_o8yke"]
+[ext_resource type="PackedScene" uid="uid://ddfjm837ke2mt" path="res://Random_Gen/brick2.tscn" id="8_kigwl"]
 
 [node name="room13" type="Node2D"]
 
 [node name="block1" parent="." instance=ExtResource("4_onlf7")]
-position = Vector2(-69, 0)
+position = Vector2(-68, -63)
 scale = Vector2(0.5, 0.5)
 
 [node name="block2" parent="." instance=ExtResource("4_onlf7")]
-position = Vector2(95, -87)
+position = Vector2(96, -150)
 scale = Vector2(6, 6)
 
 [node name="block3" parent="." instance=ExtResource("4_onlf7")]
-position = Vector2(-168, -47)
+position = Vector2(-167, -110)
 scale = Vector2(1.5, 1.5)
 
 [node name="block4" parent="." instance=ExtResource("4_onlf7")]
-position = Vector2(-100, -177)
+position = Vector2(-99, -240)
 scale = Vector2(3.8, 3.8)
 
 [node name="block5" parent="." instance=ExtResource("4_onlf7")]
-position = Vector2(22, -253)
+position = Vector2(23, -316)
 scale = Vector2(1.5, 1.5)
 
 [node name="block6" parent="." instance=ExtResource("4_onlf7")]
-position = Vector2(-157, -309)
+position = Vector2(-156, -372)
 scale = Vector2(2.2, 2.2)
 
 [node name="block7" parent="." instance=ExtResource("4_onlf7")]
-position = Vector2(-104, -279)
+position = Vector2(-103, -342)
 scale = Vector2(0.3, 0.3)
 
 [node name="block8" parent="." instance=ExtResource("4_onlf7")]
-position = Vector2(-36, -375)
+position = Vector2(-35, -438)
 scale = Vector2(3.5, 3.5)
 
 [node name="block9" parent="." instance=ExtResource("4_onlf7")]
-position = Vector2(138, -278)
+position = Vector2(139, -341)
 scale = Vector2(3.3, 3.3)
 
 [node name="block10" parent="." instance=ExtResource("4_onlf7")]
-position = Vector2(87, -399)
+position = Vector2(88, -462)
 scale = Vector2(2, 2)
 
 [node name="block11" parent="." instance=ExtResource("4_onlf7")]
-position = Vector2(-124, -414)
+position = Vector2(-123, -477)
 
 [node name="WallJump" parent="." instance=ExtResource("2_3ychk")]
-position = Vector2(-69, -41)
+position = Vector2(-68, -104)
 
 [node name="SpeedBoost" parent="." instance=ExtResource("5_o8yke")]
-position = Vector2(172, -203)
+position = Vector2(173, -266)
 
 [node name="WallJump2" parent="." instance=ExtResource("2_3ychk")]
-position = Vector2(-62, -263)
+position = Vector2(-61, -326)
 
 [node name="DoubleJump" parent="." instance=ExtResource("4_ynkx8")]
-position = Vector2(161, -358)
+position = Vector2(162, -421)
 
 [node name="SpeedBoost2" parent="." instance=ExtResource("5_o8yke")]
-position = Vector2(-172, -364)
+position = Vector2(-171, -427)
+
+[node name="brick2" parent="." instance=ExtResource("8_kigwl")]
+position = Vector2(-137, -1)
+
+[node name="brick3" parent="." instance=ExtResource("8_kigwl")]
+position = Vector2(137, -1)
+
+[node name="brick4" parent="." instance=ExtResource("8_kigwl")]
+position = Vector2(-50, -1)
+
+[node name="brick5" parent="." instance=ExtResource("8_kigwl")]
+position = Vector2(50, -1)

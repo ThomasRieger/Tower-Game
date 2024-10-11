@@ -105,7 +105,7 @@ func random_room():
 							flip = true
 						i += rng.randf_range(0.6, 1.2)
 						spawn("res://Random_Gen/room13.tscn", i, 240)
-						i += 14
+						i += 16
 					14:
 						i += rng.randf_range(0.6, 1.2)
 						spawn("res://Random_Gen/room14.tscn", i, 240)
@@ -130,7 +130,7 @@ func random_room():
 						i += 10.5
 
 func _ready() -> void:
-	while(i < 200):
+	while(i < 1):
 		match rng.randi_range(0, 3):
 			0:
 				#platform flooring for 1 to 10
@@ -171,6 +171,7 @@ func _ready() -> void:
 			3:
 				random_room()
 				
-		
+	i += rng.randf_range(0.6, 1)
+	spawn("res://Random_Gen/boss_room.tscn", i, 240)
 		#match rng.randi_range()
 		#rng.randi_range(0, 1000)
