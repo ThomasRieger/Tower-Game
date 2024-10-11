@@ -5,7 +5,7 @@ const SPEED = 150.0
 const JUMP_VELOCITY = -300.0
 const GRAVITY = 500.0
 const FALL_MULTIPLIER = 1.5
-const DASH_SPEED = 700.0
+const DASH_SPEED = 500.0
 const POWTIME = 0.1
 
 # Nodes
