@@ -5,7 +5,7 @@ var player
 
 func _physics_process(delta: float) -> void:
 	player = get_tree().current_scene.get_node("Player")
-	if get_tree().current_scene.get_node("Player") != null:
+	if get_tree().current_scene.get_node("Player") != null and Engine.time_scale == 1:
 		position.x = move_toward(position.x, player.position.x, 0.5 + delta * abs(position.x - player.position.x) * 0.5)
 		position.y = move_toward(position.y, player.position.y - 8, 0.5 + delta * abs(position.y - player.position.y) * 0.5)
 		#move_and_slide()

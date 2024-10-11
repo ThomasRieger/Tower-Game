@@ -256,6 +256,7 @@ theme_override_fonts/font = ExtResource("4_l561f")
 text = "Attempt 0"
 
 [node name="Ending" parent="." instance=ExtResource("13_37cqu")]
+visible = false
 
 [node name="Progress" type="Node2D" parent="."]
 position = Vector2(445, -263)
