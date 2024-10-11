@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://gdglwyk35qax"]
+[gd_scene load_steps=23 format=4 uid="uid://gdglwyk35qax"]
 
 [ext_resource type="Script" path="res://main/start_floor_1.gd" id="1_08a6g"]
 [ext_resource type="Script" path="res://Scripts/camera_2d.gd" id="1_aq8g7"]
@@ -12,7 +12,10 @@
 [ext_resource type="Script" path="res://main/Stopwatch.gd" id="11_kb3g1"]
 [ext_resource type="PackedScene" uid="uid://dag1cpcorbjat" path="res://Ending.tscn" id="13_37cqu"]
 [ext_resource type="Script" path="res://Random_Gen/rand_gen.gd" id="14_6slis"]
+[ext_resource type="Script" path="res://progress_bar/prograss.gd" id="14_50frp"]
 [ext_resource type="PackedScene" uid="uid://cicobqfijtyqs" path="res://assets/sound/sfx_player.tscn" id="14_ncwhb"]
+[ext_resource type="Texture2D" uid="uid://daimdfi6o17e3" path="res://progress_bar/progresslevel_black.png" id="15_8t5p7"]
+[ext_resource type="Texture2D" uid="uid://bk6cwgxu3lkb8" path="res://progress_bar/progresslevel_orange.png" id="16_k1v8g"]
 
 [sub_resource type="Gradient" id="Gradient_6e28p"]
 offsets = PackedFloat32Array(0)
@@ -253,3 +256,26 @@ theme_override_fonts/font = ExtResource("4_l561f")
 text = "Attempt 0"
 
 [node name="Ending" parent="." instance=ExtResource("13_37cqu")]
+
+[node name="Progress" type="Node2D" parent="."]
+position = Vector2(445, -263)
+scale = Vector2(2.5, 2.5)
+script = ExtResource("14_50frp")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Progress"]
+offset_right = 40.0
+offset_bottom = 40.0
+fill_mode = 3
+texture_under = ExtResource("15_8t5p7")
+texture_progress = ExtResource("16_k1v8g")
+
+[node name="Label" type="Label" parent="Progress"]
+offset_left = -3.59999
+offset_top = -6.8
+offset_right = 36.4
+offset_bottom = 16.2
+theme_override_colors/font_color = Color(0.682353, 0.466667, 0.32549, 1)
+theme_override_fonts/font = ExtResource("4_l561f")
+theme_override_font_sizes/font_size = 4
+text = "Test"
+horizontal_alignment = 1
